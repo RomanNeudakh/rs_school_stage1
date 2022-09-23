@@ -1,0 +1,466 @@
+
+html {
+    scroll-behavior: smooth; 
+  }
+body {
+    font-family: 'Roboto', sans-serif;
+    max-width: 1600px;
+    min-width: 1160px;
+    margin: 0 auto;
+  
+}
+.main {
+min-width: 1160px;
+}
+.main .preview {
+    position: relative;
+    max-width: 1600px;
+    height: 780px;
+    transform: translateY(-80px);
+    background: url(/online-zoo/assets/images/Giant\ Panda.jpg) center center/cover no-repeat;
+    z-index: 0;
+
+}
+.container {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+.header {
+    position: relative;
+    max-width: 1600px;
+    min-height: 80px;
+    margin: 0 auto;
+    background-color: #000000;
+    z-index: 10;
+    color: white;
+}
+.header .container {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+.header .container .header-container {
+    display: flex;
+    padding-top: 14px;
+
+}
+.header .container .header-container div {
+    margin-right: 0;
+    line-height: 52px;
+    font-weight: 500;
+}
+.header .container .header-container .nav {
+    margin-right: 37.8%;
+}
+.header .logo_svg {
+    position: relative;
+    max-width: 82px;
+    max-height: 52px;
+    margin-right: 5.55%;
+   
+}
+.header .nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style-type: none;
+}
+.nav-item-header {
+    margin-right: 58px;
+    text-decoration: none;
+}
+
+.nav-item-header:last-child {
+    margin-right: 0;
+}
+.header .nav-list .nav-item-header .nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+.nav-link:first-child {
+    margin-right: 0;
+}
+/*-------------------------------backstage section------------------------------------------*/
+.backstage {
+    position: relative;
+    margin-top: 60px;
+}
+.orange_circle_container {
+    max-width: 573px;
+    min-height: 488px;
+    position: relative;
+    max-width: 573px;
+    margin-left: auto;
+    padding-top: 92px;
+}
+
+.orange_circle {
+    width: 465px;
+    height: 465px;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+
+}
+.circle_text {
+    position: absolute;
+    right: 0;
+    width: 500px;
+    font-weight: 700;
+    font-size: 107px;
+    line-height: 75%;
+    text-align: center;
+    color: white;
+
+}
+.circle_text span {
+    color: #FFEE2E;
+}
+.watch_online_button {
+    position: absolute;
+    top: 626px;
+    right: 99px;
+    width: 298px;
+    height: 54px;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    border-radius: 25px;
+    border: 0;
+    color: white;
+    font-weight: 500;
+}
+.backstage_flower {
+    position: absolute;
+    right: 0;
+    top: -129px;
+}
+.backstage .container {
+    display: flex;
+}
+.backstage-text h2 {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 120%;
+    margin: 0;
+    margin-bottom: 20px;
+    color: #333B41;
+}
+.backstage-text div {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+    margin: 54px auto 34px 0;
+    color: #333B41;
+}
+.backstage-text span {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 136%;
+    color: #333B41;
+}
+.backstage-cap {
+    margin-right: 87px;
+}
+
+/*--------------------------choise animal section*----------------------------------------*/
+
+.favorite_animal {
+    margin-top: 180px;
+}
+.favorite_animal .container {
+    min-height: 100px;
+    margin: 0 20px;
+}
+.right_arrow {
+    
+}
+.left_arrow {
+    
+}
+.animal_cards_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.cards {
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #FE9013;
+    border-width: 1px;
+}
+.card_name {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px 9px 15px;
+}
+.card_name div {
+    font-weight: 300;
+    font-size: 15px;
+}
+.card_name span {
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.card_down {
+    margin-top: 20px;
+}
+.choise_button {
+    width: 298px;
+    height: 54px;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    border-radius: 25px;
+    border: 0;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 80px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+.favorite_animal_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.favorite_animal_background_flowers {
+    position: relative;
+}
+.favorite_animal_right_flower {
+    position: absolute;
+    transform: translate(-63%,144%);
+    z-index: 2;
+}
+.favorite_animal_left_flower {
+    position: absolute;
+    transform: translate(-494%, 45%);
+    z-index: 2;
+}
+.pick_afriend {
+    height: 1004px
+}
+.pick_afriend_container {
+    position: relative;
+    height: 1004px;
+    margin-top: 100px;
+    background: linear-gradient(315.75deg, rgba(254, 210, 144, 0.7) 23.3%, rgba(254, 210, 144, 0.7) 30.06%, rgba(254, 194, 165, 0.933151) 73.3%, #FEBDAB 100.95%, rgba(254, 210, 144, 0.7) 106.36%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 82.21%, #EAF7FE 127.9%, #EAF7FE 149.54%), linear-gradient(315.75deg, rgba(254, 189, 171, 0.74) 30.06%, rgba(243, 169, 248, 0.66) 50.74%, #E0D8F0 80.49%, #EAF7FE 127.9%, #EAF7FE 149.54%);
+    opacity: 0.9;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.pick_afriend .container {
+    position: absolute;
+    height: 835px;
+    left: 220px;
+    right: 220px;
+    top: 69px;
+    background: rgba(253, 253, 255, 0.52);
+    backdrop-filter: blur(2px);
+    border-radius: 20px;
+}
+.pick_afriend_text {
+
+}
+.pick_afriend_title {
+    margin-top: 41px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 120%;
+    text-align: center;
+    color: #FE9013;
+}
+.pick_text {
+
+}
+.pick_text:nth-child(2) {
+    margin: -7px auto auto 99px;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 120%;
+    color: #333B41;
+}
+.pick_text:nth-child(3) {
+    margin: 40px auto auto 99px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+    color: #333B41;
+}
+.pick_text:nth-child(4) {
+    margin: 10px 197px auto 99px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: #333B41;
+}
+.pick_afriend_text h3 {
+    margin: 60px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 130%;
+    color: #333B41;
+}
+.pick_text span {
+    border-bottom: #FE9013 solid;
+    border-width: 1px;
+}
+.how_it_work_container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    right: 50%;
+    transform: translate(51%, -10%);
+}
+.how_it_work_kards {
+    max-width: 168px;
+    margin-right: 30px;
+}
+.how_it_work_kard {
+    
+}
+.how_it_work_arrow {
+    margin-right: 30px;
+    margin-top: 60px;
+}
+.card_text {
+    margin-top: 30px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    color: #333B41;
+}
+.pick_afriend .choise_button {
+    margin-top: 791px;
+}
+.testimonials{
+
+}
+.testimonials_container {
+
+}
+.testimonials_boxes {
+margin-top: 47px;
+}
+.testimonials_box {
+
+}
+.testimonials_card {
+    width: 268px;
+    height: 391px;
+    margin-right: 30px;
+    background:#F1F3F2;
+    border-radius: 20px;
+    position: relative;
+}
+.testimonials_card:nth-child(4) {
+    margin-right: 0;
+}
+
+.testimonials_box:nth-child(1) {
+    display: flex;
+}
+.testimonials_box:nth-child(2) {
+    margin-top: 17px;
+    margin-left: 280px;
+}
+.testimonials_box .choise_button {
+    width: 298px;
+    height: 54px;
+    margin-top: 31px;
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    border-radius: 5px;
+    left: 0;
+    transform: translate(0, 0);
+}
+.testimonials h2 {
+    margin-top: 140px;
+    margin-bottom: 0;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 130%;
+    text-align: center;
+    color: #333B41;
+}
+.testimonials_card_inside {
+
+}
+.testimonials_card_header {
+    display: flex;
+    flex-direction: row;
+    padding: 16px 16px 0 16px;
+}
+.testimonials_card_header img {
+    margin-right: 10px;
+}
+.testimonials_card_text {
+    padding: 11px 15px;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 120%;
+    color: #767474;
+}
+.testimonials_name span {
+    font-weight: 300;
+    font-size: 15px;
+    color: #BDBDBD;
+}
+.flower_background {
+    position: absolute;
+
+    transform: translate(548%,-24%);
+}
+.flower_4 {
+
+}
+
+/*----------------------------------------footer-*-------------------------------------------*/
+
+.footer {
+    background-color: #111115;
+    min-height: 443px;
+    margin-top: 180px;
+}
+.footer .container {
+
+}
+.footer_container {
+    display: flex;
+}
+.footer_boxes {
+    display: flex;
+    flex-direction: column;
+}
+.first_section_footer {
+
+}
+.first_section_footer .choise_button {
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    border-radius: 5px;
+}
+.second_section_footer {
+
+}
+.second_section_footer .nav-list {
+    display: flex;
+    color: white;
+}
+.thrid_section_footer {
+
+}
+.thrid_section_footer:nth-child(1) {
+  color: white;
+}
+.thrid_section_footer:nth-child(3) {
+    color: white;
+  }
+.footer_sosial {
+    color: white;
+}
