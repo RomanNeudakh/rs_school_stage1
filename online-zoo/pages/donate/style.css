@@ -55,6 +55,9 @@ min-width: 1160px;
     color: white;
     font-weight: 500;
 }
+.header .container .header-container div a:hover {
+    color: orange;
+}
 .header .container .header-container .nav {
     margin-right: 37.8%;
 }
@@ -81,12 +84,16 @@ min-width: 1160px;
 }
 .header .nav-list .nav-item-header .nav-link {
     text-decoration: none;
-    color: white;
     font-weight: 500;
+}
+.nav-link {
+    color: white;
+}
+.nav-link:hover {
+    color: orange ;
 }
 .nav-link:first-child {
     margin-right: 0;
-    color: orange ;
 }
 /*-------------------------------backstage section------------------------------------------*/
 
@@ -103,6 +110,16 @@ min-width: 1160px;
     position: relative;
     left: 50%;
     transform: translate(-50%, 0);
+}
+.choise_button {
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+}
+.choise_button:hover {
+    background:#E47209;
+    cursor: pointer;
+}
+.choise_button:active { 
+    background: #4B9200;
 }
 /*--------------------------------pick and feed section-----------------------*/
 .pick_afriend {
@@ -335,13 +352,88 @@ position: relative;
     height: 50px;
     background:  rgba(1, 1, 1, 0);
 }
+.input_amount:focus {
+    color: #4B9200;
+    border-color: Green;
+    box-shadow: 1px 1px 2px 0 Green;
+}
+.input_amount:invalid {
+    color: red;
+    border-color: red;
+    box-shadow: 1px 1px 2px 0 red;
+}
+.radio_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 27px;
+    margin-right: -31px;
+}
+.form-group {
+    margin-right: 48px;
+}
+/*------------------------------radio-------------------------------------------*/
+  /* Рисуем внешний круг радиокнопки*/
+  .custom-radio-btn {
+    position: relative; /* Родительский элемент*/
+    display: inline-block; /* Для применения рамок, размеров*/
+    width: 16px;
+    height: 16px;
+    background: rgb(0, 0, 0, 0);
+    border: 1px solid #FE9013; /* Толщина, стиль, цвет рамки*/
+    border-radius: 50%; /* Получение круга*/
+    vertical-align: text-top; /* Выравнивание кнопки по центру*/
+    margin-right: 5px; /* Отступ между кнопкой и меткой*/
+}
+.custom-radio-btn:hover {
+    cursor: pointer;
+}
+/* Рисуем внутренний круг */
+.custom-radio-btn::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #FE9013;
+    border-radius: 50%;
 
-/*----------------------------------------footer-*-------------------------------------------*/
+/* Выравниваем по центру относительно внешнего круга */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+
+/* Плавный переход трансформации масштабирования */
+    transition: 0.2s ease-in;
+}
+.real-radio-btn:checked + .custom-radio-btn::before {
+    transform: translate(-50%, -50%) scale(1);
+}    
+.real-radio-btn {
+                    /* Скрываем реальную радио кнопку*/
+    width: 0;
+    height: 0;
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+.feed_a_friend {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    margin-top: -50px;
+    margin-left: 3px;
+}
+.feed_a_friend_text {
+    text-align: center;
+    margin-top: 32px;
+}
+/*----------------------------------------------footer------------------------*/
+
 
 .footer {
     background-color: #111115;
     min-height: 443px;
-    margin-top: 180px;
+    margin-top: 475px;
 }
 .footer .container {
 
@@ -428,7 +520,6 @@ position: relative;
 }
 .footer_boxes .nav-list .nav-item-header .nav-link {
     text-decoration: none;
-    color: white;
     font-weight: 500;
 }
 .footer_boxes .nav-link:first-child {
@@ -457,11 +548,6 @@ position: relative;
     color: #4B9200;
     border-color: Green;
     box-shadow: 1px 1px 2px 0 Green;
-}
-.thrid_section_footer input:invalid {
-    color: red;
-    border-color: red;
-    box-shadow: 1px 1px 2px 0 red;
 }
 .submit {
     width: 129px;

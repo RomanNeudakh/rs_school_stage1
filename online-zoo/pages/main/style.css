@@ -23,7 +23,7 @@ min-width: 1160px;
     max-width: 1600px;
     height: 780px;
     transform: translateY(-80px);
-    background-image: url(/online-zoo/assets/images/Giant\ Panda.jpg);
+    background-image: url(../../assets/images/Giant\ Panda.jpg);
     z-index: 0;
 
 }
@@ -57,6 +57,9 @@ min-width: 1160px;
     color: white;
     font-weight: 500;
 }
+.header .container .header-container div a:hover {
+    color: orange;
+}
 .header .container .header-container .nav {
     margin-right: 37.8%;
 }
@@ -81,14 +84,14 @@ min-width: 1160px;
 .nav-item-header:last-child {
     margin-right: 0;
 }
+
 .header .nav-list .nav-item-header .nav-link {
     text-decoration: none;
-    color: white;
     font-weight: 500;
 }
+
 .nav-link:first-child {
     margin-right: 0;
-    color: orange ;
 }
 /*-------------------------------backstage section------------------------------------------*/
 .backstage {
@@ -115,6 +118,7 @@ min-width: 1160px;
 .circle_text {
     position: absolute;
     right: 0;
+    top: 75px;
     width: 500px;
     font-weight: 700;
     font-size: 107px;
@@ -190,11 +194,11 @@ min-width: 1160px;
     margin: 0 20px;
 }
 .arrow {
+    margin-top: -11px;
     width: 62px;
     height: 62px;
     background-color: rgba(249, 128, 75, 1);
     border-radius: 50%;
-    transition: all 0.7s ease;
 }
 .arrow:hover {
     cursor: pointer;
@@ -242,7 +246,7 @@ min-width: 1160px;
 .card_name {
     display: flex;
     justify-content: space-between;
-    padding: 10px 15px 9px 15px;
+    padding: 3px 15px 9px 15px;
     background: white;
     transition: all 0.7s ease;
     overflow: hidden;
@@ -275,7 +279,7 @@ min-width: 1160px;
     text-transform: uppercase;
 }
 .card_down {
-    margin-top: 20px;
+    margin-top: 17px;
 }
 .choise_button {
     width: 298px;
@@ -457,7 +461,7 @@ margin-top: 47px;
 .testimonials_box .choise_button {
     width: 298px;
     height: 54px;
-    margin-top: 26px;
+    margin-top: 41px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     border-radius: 5px;
     left: 0;
@@ -470,6 +474,40 @@ margin-top: 47px;
 .testimonials_box .choise_button:active {
     background: #4B9200;
 }
+
+/*-------------------- Стилизация input-range----------------------*/
+input[type=range] {
+    position: absolute;
+    -webkit-appearance: none;
+    background: transparent;
+    width: 600px;
+    margin: 2px 1px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 600px;
+    height: 8px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+    background:rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    border: 0.5px solid rgba(254, 189, 171, 0.74);
+}
+input[type=range]::-webkit-slider-thumb {
+    height: 8px;
+    width: 116px;
+    border-radius: 5px;
+    background: #FE9013;
+    margin-left: -2px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -1px;
+    z-index: 5;
+    }
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #bada55;
+    z-index: 0;
+}
+/*--------------------------------------------*/
 .testimonials h2 {
     margin-top: 140px;
     margin-bottom: 0;
@@ -478,9 +516,6 @@ margin-top: 47px;
     line-height: 130%;
     text-align: center;
     color: #333B41;
-}
-.testimonials_card_inside {
-
 }
 .testimonials_card_header {
     display: flex;
@@ -587,6 +622,7 @@ margin-top: 47px;
     margin-top: 5px;
     margin-left: 14px;
 }
+
 .footer_boxes .nav-list {
     display: flex;
     flex-wrap: wrap;
@@ -603,11 +639,16 @@ margin-top: 47px;
 }
 .footer_boxes .nav-list .nav-item-header .nav-link {
     text-decoration: none;
-    color: white;
     font-weight: 500;
 }
 .footer_boxes .nav-link:first-child {
     margin-right: 0;
+}
+.nav-link {
+    color: white;
+}
+.nav-link:hover {
+    color:orange;
 }
 .thrid_section_footer input {
     width: 222px;
@@ -633,11 +674,7 @@ margin-top: 47px;
     border-color: Green;
     box-shadow: 1px 1px 2px 0 Green;
 }
-.thrid_section_footer input:invalid {
-    color: red;
-    border-color: red;
-    box-shadow: 1px 1px 2px 0 red;
-}
+
 .submit {
     width: 129px;
     height: 42px;
