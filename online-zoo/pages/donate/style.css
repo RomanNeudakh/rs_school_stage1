@@ -3,9 +3,7 @@ html {
   }
 body {
     font-family: 'Roboto', sans-serif;
-    max-width: 1600px;
-    min-width: 1160px;
-    margin: 0 auto;
+    margin: 0;
 }
 h1 {
     display: none;
@@ -20,10 +18,8 @@ min-width: 1160px;
     position: relative;
     max-width: 1600px;
     height: 390px;
-    background-image: url(../../assets/images/panda_donate.jpg);
-    
+    background: url(../../assets/images/panda_donate.jpg) center center/cover no-repeat;
     z-index: 0;
-
 }
 .container {
     max-width: 1160px;
