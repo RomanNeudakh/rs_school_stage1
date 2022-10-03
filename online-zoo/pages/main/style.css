@@ -695,9 +695,6 @@ input[type=range]::-webkit-slider-thumb {
     background-color:rgba(75, 146, 0, 1);
 }
 
-@media (max-width: 1599px) {
-
-}
 @media (max-width: 1575px) {
     .favorite_animal_left_flower {
         transform: translate(-180%, -49%);
