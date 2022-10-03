@@ -6,63 +6,64 @@ body {
     margin: 0;
 }
 h1 {
-    display: none;
+    display: inline-block;
+    font-weight: 400;
+    font-size: 19.0145px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4.75px;
+    color: white;
 }
 a {
     text-decoration: none;
-}
-.main {
-min-width: 1160px;
-}
-.main .preview {
-    position: relative;
-    max-width: 1600px;
-    height: 390px;
-    background: url(../../assets/images/panda_donate.jpg) center center/cover no-repeat;
-    z-index: 0;
+    color: white;
 }
 .container {
     max-width: 1160px;
     margin: 0 auto;
 }
+/*----------------------------Header-----------------------------------*/
 .header {
     position: relative;
-    max-width: 1600px;
     min-height: 80px;
     margin: 0 auto;
-    background-color: #000000;
-    z-index: 10;
-    color: white;
+    background: black center center/cover no-repeat;
+    z-index:1;
 }
-.header .container {
-    max-width: 1160px;
-    margin: 0 auto;
-}
-.header .container .header-container {
+.header-container {
     display: flex;
     padding-top: 14px;
-
-}
-.header .container .header-container div a{
-    margin-right: 0;
-    line-height: 52px;
-    font-weight: 500;
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-}
-.header .container .header-container div a:hover {
-    color: orange;
-}
-.header .container .header-container .nav {
-    margin-right: 37.8%;
 }
 .header .logo_svg {
     position: relative;
     max-width: 82px;
     max-height: 52px;
     margin-right: 5.55%;
-   
+}
+.logo_svg div {
+    position: relative;
+    width: 82px;
+    height: 52px;
+    border: 1px solid #FFFFFF;
+    border-radius: 2px;
+}
+.logo_svg img {
+    position: absolute;
+    top: 22.09px;
+    left: 9.13px;
+}
+.header-container div a{
+    margin-right: 0;
+    line-height: 52px;
+    font-weight: 500;
+}
+.header-container div a:hover {
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.header-container .nav {
+    margin-right: 37.8%;
 }
 .header .nav-list {
     display: flex;
@@ -74,24 +75,23 @@ min-width: 1160px;
     margin-right: 58px;
     text-decoration: none;
 }
-
-.nav-item-header:last-child {
-    margin-right: 0;
-}
-.header .nav-list .nav-item-header .nav-link {
+.header .nav-link {
     text-decoration: none;
     font-weight: 500;
 }
-.nav-link {
-    color: white;
+.header .nav-item-header:nth-child(4){
+    background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-.nav-link:hover {
-    color: orange ;
+/*-------------------------------Main-------------------------------------*/
+.main .preview {
+    position: relative;
+    height: 390px;
+    background: url(../../assets/images/panda_donate.jpg) center center/cover no-repeat;
+    z-index: 0;
 }
-.nav-link:first-child {
-    margin-right: 0;
-}
-/*-------------------------------backstage section------------------------------------------*/
+/*-------------------------------Button------------------------------------------*/
 
 .choise_button {
     width: 298px;
@@ -120,9 +120,6 @@ min-width: 1160px;
 /*--------------------------------pick and feed section-----------------------*/
 .pick_afriend {
     height: 1004px
-}
-.donation_information_text {
-
 }
 .container_anotation {
     max-width: 1160px;
@@ -158,18 +155,16 @@ min-width: 1160px;
 .pick_afriend .container {
     position: absolute;
     height: 964px;
-    left: 220px;
-    right: 220px;
+    left: 0;
+    right: 0;
     top: 334px;
     background: rgba(253, 253, 255, 0.52);
     backdrop-filter: blur(2px);
     border-radius: 20px;
 }
-.pick_afriend_text {
-
-}
 .pick_afriend_title {
     margin-top: 41px;
+    padding-right: 14px;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -185,50 +180,44 @@ min-width: 1160px;
     line-height: 120%;
     color: #333B41;
 }
-
-
 .donate_for_panda {
     display: flex;
     justify-content: center;
+    position: relative;
     align-items: center;
     margin-top: 9px;
-    margin-left: -21px;
     height: 350px;
-
 }
-
 .donate_for_panda_boxes div {
-    margin-bottom: 12px;
+    position: absolute;
+    transform: translate(-523%, -33%);
     font-weight: 500;
     font-size: 72px;
     line-height: 80%;
-    text-align: center;
     text-transform: uppercase;
     color: #000000;
 }
-.donate_for_panda_boxes:nth-child(1) {
-    margin-bottom: -51px;
-    padding-left: 6px;
+.donate_for_panda_boxes span{
+    position: absolute;
+    width: 161px;
+    transform: translate(-170%, 279%);
 }
+
 .donate_for_panda_boxes:nth-child(2) {
-    margin-top: 28px;
-    padding-left: 12px;
+   position: absolute;
+   transform: translate(-685%, 72%);
 }
 .donate_for_panda_boxes:nth-child(3) {
-    padding-left: 62px;
-}
-.input_range {
-
-}
-.input_range_boxes {
-
+    position: absolute;
+    transform: translate(41%, 0);
 }
 .donate_value {
-flex-basis: 12.1%;
+    flex-basis: 12.1%;
 }
 .input_range_boxes:nth-child(1) {
     display: flex;
-    margin-left: 96px;
+    max-width: 976px;
+    margin: 0 auto;
     margin-bottom: 16px;
     margin-top: -6px;
     font-weight: 400;
@@ -252,60 +241,100 @@ flex-basis: 12.1%;
 /*-------------------- Стилизация input-range----------------------*/
 input[type=range] {
     position: absolute;
+    right: 0;
+    left: 0;
     -webkit-appearance: none;
     background: transparent;
     width: 915px;
-    margin: -21px 27px;
+    margin: 13px auto;
 }
-
 input[type=range]::-webkit-slider-runnable-track {
-width: 915px;
-height: 2px;
-cursor: pointer;
-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
-background:#72828E;
-border-radius: 1.3px;
-border: 0.2px solid rgba(1, 1, 1, 0);
-}
-
-input[type=range]::-webkit-slider-thumb {
-    height: 23px;
-    width: 23px;
-    border-radius: 50%;
-    border: #FE9013 solid 2px;
-    margin-left: -2px;
+    width: 915px;
+    height: 2px;
     cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: -11px;
-    margin-left: -3px;
-    z-index: 5;
-    }
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0), 0 0 1px rgba(13, 13, 13, 0);
+    background:#72828E;
+    border-radius: 1.3px;
+    border: 0.2px solid rgba(1, 1, 1, 0);
+}
+input[type=range]::-webkit-slider-thumb {
+    display: none;
+}
 input[type=range]:focus::-webkit-slider-runnable-track {
-background: #bada55;
-z-index: 0;
+    background: #bada55;
+    z-index: 0;
 }
 /*------------------------------------------------------------------------------*/
 .circle_button {
     border: none; 
     outline: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color:#FFEE2E;
+    margin-right: 68px;
+    z-index: 1;
+}
+/*--------------------------Удалить----------------------------*/
+.circle_button:nth-child(3)::before {
+    cursor: pointer;
+    content:'';
+    display: block;
+    border: 2px #FE9013 solid;
+    border-radius: 50%;
+    width: 23px;
+    height: 23px;
+    transform: translate(-50%, -33%);
+    transition: 0.2s ease all;
+}
+.circle_button:nth-child(3)::after {
+    cursor: pointer;
+    content:'';
+    display: block;
+    border: 2px #FE9013 solid;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -100%);
+    transition: 0.2s ease all;
+}
+.donate_value:nth-child(3) {
+    color: orange;
+}
+/*-----------------------------------------*/
+.circle_button::before {
+    content: '';
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color:rgba(0, 0, 0, 0);
-    margin-right: 89px;
-    z-index: 1;
-  
+    display: block;
+    transform: translate(-50%, -50%);
 }
-.circle_button:hover {
+.circle_button:hover::before {
     cursor: pointer;
-    border: #E47209 solid 2px;
+    content:'';
+    display: block;
+    border: 2px #FE9013 solid;
+    border-radius: 50%;
+    width: 23px;
+    height: 23px;
+    transform: translate(-50%, -33%);
+    transition: 0.2s ease all;
 }
-.circle_button:active {
-    border: #E47209 solid 2px;
+.circle_button:hover::after {
+    cursor: pointer;
+    content: '';
+    display: block;
+    border: 2px #FE9013 solid;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #FE9013;
+    transform: translate(-50%, -100%);
+    transition: 0.2s ease all;
 }
-
 .input {
-    margin: 0 92px;
+    margin: 0 auto;
     width: 976px;
     height: 27px;
     left: 0px;
@@ -314,7 +343,7 @@ z-index: 0;
     border-radius: 2px;
 }
 .relative_container {
-position: relative;
+    position: relative;
 }
 .input_value {
     height: 10px;
@@ -322,20 +351,21 @@ position: relative;
     border-radius: 50%;
     background: #FFEE2E;
     margin: 0 auto;
-
 }
 .circle_button:nth-child(8) {
- margin-right: 0;
+    margin-right: 0;
 }
 .input_value_container {
     display: flex;
-    justify-content: left;
-    margin-top: -7px;
-    margin-left: 13px;
+    justify-content: space-around;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin-top: 8px;
 }
 .input_amount_container {
     margin-top: 50px;
-    margin-left: 446px;
+    text-align: center;
 }
 .input_amount {
     outline: none;
@@ -362,14 +392,14 @@ position: relative;
     display: flex;
     justify-content: center;
     margin-top: 27px;
-    margin-right: -31px;
 }
 .form-group {
-    margin-right: 48px;
+    margin-right: 33px;
+    margin-left: 18px;
 }
 /*------------------------------radio-------------------------------------------*/
   /* Рисуем внешний круг радиокнопки*/
-  .custom-radio-btn {
+.custom-radio-btn {
     position: relative; /* Родительский элемент*/
     display: inline-block; /* Для применения рамок, размеров*/
     width: 16px;
@@ -387,17 +417,15 @@ position: relative;
 .custom-radio-btn::before {
     content: '';
     display: inline-block;
-    width: 8px;
-    height: 8px;
-    background: #FE9013;
+    width: 17px;
+    height: 17px;
+    background: green;
     border-radius: 50%;
-
 /* Выравниваем по центру относительно внешнего круга */
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) scale(0);
-
 /* Плавный переход трансформации масштабирования */
     transition: 0.2s ease-in;
 }
@@ -405,7 +433,7 @@ position: relative;
     transform: translate(-50%, -50%) scale(1);
 }    
 .real-radio-btn {
-                    /* Скрываем реальную радио кнопку*/
+ /* Скрываем реальную радио кнопку*/
     width: 0;
     height: 0;
     position: absolute;
@@ -424,15 +452,10 @@ position: relative;
     margin-top: 32px;
 }
 /*----------------------------------------------footer------------------------*/
-
-
 .footer {
     background-color: #111115;
     min-height: 443px;
     margin-top: 475px;
-}
-.footer .container {
-
 }
 .footer_container {
     display: flex;
@@ -441,20 +464,10 @@ position: relative;
     display: flex;
     flex-direction: column;
 }
-.first_section_footer {
-
-}
 .first_section_footer .choise_button {
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     border-radius: 5px;
-    margin-top: 0;
-}
-.first_section_footer .choise_button:hover {
-    background:#E47209;
-    cursor: pointer;
-}
-.first_section_footer .choise_button:active { 
-    background: #4B9200;
+    margin-top: 4px;
 }
 .first_section_footer:nth-child(1) {
     margin-top: 39px;
@@ -463,7 +476,16 @@ position: relative;
     margin-top: 65px;
 }
 .first_section_footer:nth-child(3) {
-    margin-top: 44px;
+    margin-top: 34px;
+}
+.first_section_footer .logo_svg h2 {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 19.0145px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4.75px;
+    color: white;
 }
 .second_section_footer {
     margin-top: 357px;
@@ -471,34 +493,48 @@ position: relative;
 }
 .second_section_footer .nav-list {
     display: flex;
-    color: white;
-}
-.thrid_section_footer {
-
 }
 .thrid_section_footer:nth-child(1) {
     font-weight: 400;
     font-size: 24px;
     line-height: 120%;
-    color: #FFFFFF;
+    color: white;
 }
 .thrid_section_footer:nth-child(3) {
-    color: rgba(255, 255, 255, 1);
     font-weight: 100;
     font-size: 16px;
     line-height: 200%;
     margin-left: auto;
     margin-top: auto;
     margin-bottom: 8px;
-  }
+    color: #E0D8F0;
+}
 .footer_sosial {
-    color: white;
     display: flex;
-    margin-top: 4px;
+    margin-top: 10px;
+}
+.footer_sosial div {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(196, 196, 196, 0.5);
+}
+.footer_sosial img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .footer_sosial span {
-    margin-top: 5px;
-    margin-left: 14px;
+    margin-top: 6px;
+    margin-left: 12px;
+}
+.footer_sosial:hover div {
+    background: green;
+}
+.footer_sosial:hover span {
+    color: green;
 }
 .footer_boxes .nav-list {
     display: flex;
@@ -510,7 +546,6 @@ position: relative;
     margin-right: 58px;
     text-decoration: none;
 }
-
 .nav-item-header:last-child {
     margin-right: 0;
 }
@@ -520,6 +555,9 @@ position: relative;
 }
 .footer_boxes .nav-link:first-child {
     margin-right: 0;
+}
+.nav-link:hover {
+    color:orange;
 }
 .thrid_section_footer input {
     width: 222px;
@@ -553,15 +591,22 @@ position: relative;
     border: black solid 2px;
 }
 .submit:hover {
-cursor: pointer;
-color: #4B9200;
-border-color: Green;
-box-shadow: 1px 1px 2px 0 Green;
+    cursor: pointer;
+    color: #4B9200;
+    border-color: Green;
+    box-shadow: 1px 1px 2px 0 Green;
 }
 .footer_boxes:nth-child(3) {
-margin-top: 40px;
-margin-left: 33px;
+    margin-top: 40px;
+    margin-left: 33px;
 }
 .thrid_section_footer:nth-child(2) {
-margin-top: 14px;
+    margin-top: 14px;
+}
+.choise_button:hover {
+    cursor: pointer;
+    background: #E47209;
+}
+.choise_button:active {
+    background-color:rgba(75, 146, 0, 1);
 }
