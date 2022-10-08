@@ -1895,6 +1895,104 @@ input[type=range]::-moz-range-thumb {
         font-size: 15px;
     }
 }
+/*--------------------------------------Burger-menu--------------------------------------*/
+.burger_menu {
+    position: fixed;
+    max-width: 640px;
+    width: 100%;
+    max-height: 329px;
+    height: 100%;
+    z-index: 20;
+    background: rgb(255, 255, 255);  
+    transform: scaleX(0%);
+    transition: transform 0.3s ease-in-out;  
+}
+.burger_menu_active {
+    position: fixed;
+    max-width: 640px;
+    width: 100%;
+    max-height: 329px;
+    height: 100%;
+    z-index: 50;
+    background: white;
+    transform: scaleX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+.burger_menu_container {
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    z-index: 20;
+    transform: scaleX(0%);
+    transition: transform 0.3s ease-in-out;  
+}
+.burger_menu_container_active{
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    z-index: 20;
+    transform: scaleX(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.burger_menu_active .nav-list {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0 0 10px;
+    margin-top: 0;
+    list-style-type: none;
+    color: black;
+}
+.burger_menu_active h2 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #FE9013;
+    margin: 0 auto;
+    text-align: center;
+    padding: 2px;
+}
+.burger_menu_active .logo_svg div {
+    width: 66px;
+    height: 42px;
+    margin: 10px 0 0 10px;
+    border: 0.8px solid #FE9013;
+    border-radius: 2px;
+}
+.burger_menu_active .nav-link {
+    color: black;
+    line-height: 140%;
+}
+.burger_menu_active .nav-link a {
+    color: black;
+}
+.burger_menu_active .logo_svg img {
+    top: 17.09px;
+    left: 7.13px;
+    transform: none;
+}
+.burger_menu_active .nav-item-header {
+    margin-top: 15px;
+}
+.burger_menu_active .nav-item-header:nth-child(1) {
+    margin-top: 0;
+}
+.burger_menu_header_container {
+    display: flex;
+    justify-content: space-between;
+}
+.x_icon_orange {
+    margin: 10px 10px 0 0;
+    transform: scale(1.2) translate(0, 25%);
+}
+
+
+
 
 
 
