@@ -22,6 +22,20 @@ h1 {
     max-width: 1160px;
     margin: 0 auto;
 }
+/*------------------------------carusel-testimonials------------------------------*/
+.slider_testimonials {
+    width: 1160px;
+    overflow: hidden;
+}
+.slider_line_testimonials {
+    position: relative;
+    width: 3248px;
+    left: 0;
+    transition: all ease 1s;
+}
+.testimonials_card:nth-child(11) {
+    margin-right: 0;
+}
 /*-----------------------------Header-------------------------------------*/
 .header {
     position: relative;
@@ -425,7 +439,7 @@ margin-top: 47px;
 .testimonials_card {
     width: 268px;
     height: 391px;
-    margin-right: 30px;
+    margin-right: 29px;
     background:#F1F3F2;
     border-radius: 20px;
     position: relative;
@@ -442,9 +456,6 @@ margin-top: 47px;
        linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-}
-.testimonials_card:nth-child(4) {
-    margin-right: 0;
 }
 .testimonials_box:nth-child(1) {
     display: flex;
@@ -524,6 +535,7 @@ input[type=range]::-moz-range-thumb {
 }
 .testimonials_card_header img {
     margin-right: 10px;
+    border-radius: 50%;
 }
 .testimonials_card_text {
     padding: 11px 15px;
@@ -783,17 +795,15 @@ input[type=range]::-moz-range-thumb {
     .header-container .nav {
         margin-right: 34.8%;
     }
-    .testimonials_box:nth-child(1) {
-        justify-content: center;
-    }
     .testimonials_card:nth-child(4) {
         display: none;
     }
-    .testimonials_card:nth-child(3) {
-        margin-right: 0;
-    }
     .pick_afriend_container .choise_button {
         margin-top: 826px;
+    }
+    .slider_testimonials {
+        width: 891px;
+        margin: 0 auto;
     }
     .img_container img {
         width: 295px;
@@ -834,6 +844,10 @@ input[type=range]::-moz-range-thumb {
     .container {
         max-width: 1000px;
     }
+    .slider_testimonials {
+        width: 864px;
+        margin: 0 auto;
+    }
     .footer_boxes:nth-child(3) {
         margin-left: 0; 
     }
@@ -859,6 +873,9 @@ input[type=range]::-moz-range-thumb {
 @media (max-width:  1000px) {
     .container {
         max-width: 940px;
+    }
+    .slider_testimonials {
+        width: 940px;
     }
     .nav-item-header {
         margin-right: 49px;
@@ -1076,6 +1093,52 @@ input[type=range]::-moz-range-thumb {
     .pick_afriend_text {
         max-width: 700px;
     }
+    .testimonials_box:nth-child(1) {
+        flex-direction: column;
+    }
+    .testimonials_card {
+        width: 100%;
+        max-height: 117px;
+        overflow: hidden;
+        margin-top: 15px;
+    }
+    .slider_line_testimonials {
+        max-width: 100%;
+        left: 0;
+    }
+    .slider_testimonials {
+        max-width: 100%;
+    }
+    input[type=range] {
+        display: none;
+    }
+    .testimonials_box:nth-child(3) {
+        text-align: center;
+    }
+    .testimonials_card:nth-child(4) {
+        display: none;
+    }
+    .testimonials_card:nth-child(5) {
+        display: none;
+    }
+    .testimonials_card:nth-child(6) {
+        display: none;
+    }
+    .testimonials_card:nth-child(7) {
+        display: none;
+    }
+    .testimonials_card:nth-child(8) {
+        display: none;
+    }
+    .testimonials_card:nth-child(9) {
+        display: none;
+    }
+    .testimonials_card:nth-child(10) {
+        display: none;
+    }
+    .testimonials_card:nth-child(11) {
+        display: none;
+    }
 }
 @media (max-width:  940px) {
     .container {
@@ -1133,12 +1196,6 @@ input[type=range]::-moz-range-thumb {
         max-height: 117px;
         overflow: hidden;
         margin-top: 15px;
-    }
-    input[type=range] {
-        display: none;
-    }
-    .testimonials_box:nth-child(3){
-        text-align: center;
     }
     .thrid_section_footer:nth-child(3) {
         margin-left: 0px;
@@ -2003,9 +2060,8 @@ input[type=range]::-moz-range-thumb {
 
 /*------------------------------carusel------------------------------*/
 .move_right {
-transform: translateX(150%);
-transition: 1s ease;
-
+    transform: translateX(150%);
+    transition: 1s ease;
 }
 .slider_line {
     display: flex;
@@ -2016,21 +2072,84 @@ transition: 1s ease;
     left: -1190px;
     transition: 1s ease;
 }
-.animal_cards_container {
-
-}
 .slider {
     overflow: hidden;
     max-width: 100%;
-
 }
 .fav_cards_clone {
     position: relative;
-    /* margin: 0 20px; */
 }
-/* .fav_cards_clone:nth-child(3) {
-} */
 
+/*---------------------------testimonialss popup-----------------------*/
 
-
-
+.testimonial_container_popup {
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    z-index: 20;
+    transform: scale(0%);
+    transition: transform 0.4s ease-in-out;  
+}
+.testimonial_container_active{
+    display: flex;
+    align-items: center;
+    width:100%;
+    min-height:100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    top:0px;
+    z-index: 20;
+    transform: scale(100%);
+    transition: transform 0.4s ease-in-out;
+}
+.testimonials_card_popup {
+    width: 268px;
+    height: 391px;
+    margin: 0 auto;
+    background:#F1F3F2;
+    border-radius: 20px;
+    position: relative;
+}
+.testimonials_card_popup::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px; 
+    padding: 2px; 
+    background:linear-gradient(-30deg,rgba(254, 189, 171, 0.74),rgba(243, 169, 248, 0.66)); 
+    -webkit-mask: 
+       linear-gradient(#fff 0 0) content-box, 
+       linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+.testimonials_card_header_popup {
+    display: flex;
+    flex-direction: row;
+    padding: 16px 16px 0 16px;
+}
+.testimonials_card_header_popup img {
+    margin-right: 10px;
+    border-radius: 50%;
+}
+.testimonials_name_popup span {
+    font-weight: 300;
+    font-size: 15px;
+    color: #BDBDBD;
+}
+.testimonials_card_text_popup {
+    padding: 11px 15px;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 120%;
+    color: #767474;
+}
+.x_icon_popup {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
