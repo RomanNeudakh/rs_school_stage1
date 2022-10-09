@@ -236,6 +236,7 @@ h1 {
     height: 62px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     border-radius: 50%;
+    z-index: 40;
 }
 .img_arrow {
     display: block;
@@ -245,7 +246,9 @@ h1 {
 .animal_cards_container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    max-width: 1160px;
+    width: 100%;
 }
 .cards {
     display: flex;
@@ -774,6 +777,9 @@ input[type=range]::-moz-range-thumb {
     }
 }
 @media (max-width:  1180px) {
+    .animal_cards_container {
+        max-width: 1060px;
+    }
     .header-container .nav {
         margin-right: 34.8%;
     }
@@ -822,6 +828,7 @@ input[type=range]::-moz-range-thumb {
         right: 0;
         left: 0;
     }
+  
 }
 @media (max-width: 1100px) {
     .container {
@@ -925,7 +932,7 @@ input[type=range]::-moz-range-thumb {
         margin: 0 10px;
     }
     .animal_cards_container {
-        justify-content: left;
+        justify-content: center;
     }
     .cards {
         margin-right: 24px;
@@ -1172,6 +1179,9 @@ input[type=range]::-moz-range-thumb {
 }
 @media (max-width:  640px) {
     .container {
+        max-width: 600px;
+    }
+    .animal_cards_container {
         max-width: 600px;
     }
     .header-container .nav {
@@ -1991,7 +2001,35 @@ input[type=range]::-moz-range-thumb {
     transform: scale(1.2) translate(0, 25%);
 }
 
+/*------------------------------carusel------------------------------*/
+.move_right {
+transform: translateX(150%);
+transition: 1s ease;
 
+}
+.slider_line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    width: 3540px;
+    left: -1190px;
+    transition: 1s ease;
+}
+.animal_cards_container {
+
+}
+.slider {
+    overflow: hidden;
+    max-width: 100%;
+
+}
+.fav_cards_clone {
+    position: relative;
+    /* margin: 0 20px; */
+}
+/* .fav_cards_clone:nth-child(3) {
+} */
 
 
 
