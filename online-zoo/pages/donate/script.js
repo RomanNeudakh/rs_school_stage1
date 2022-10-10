@@ -41,7 +41,6 @@ let min = +input.min;
 let max = +input.max;
 
 input.addEventListener('input', (e) => {
-    let status = true;
     const value = +input.value;
     if (value > max) { input.value = max }
     else if (value < min) { input.value = min }
@@ -52,7 +51,6 @@ input.addEventListener('input', (e) => {
     money.forEach(item => {
         item.classList.remove('orange_color');
     });
-
     for (let index = 0; index < money.length; index++) {
         if (input.value == money[index].textContent.slice(1)) {
             circleButton.forEach(item => {
@@ -65,21 +63,10 @@ input.addEventListener('input', (e) => {
             money[index].classList.add('orange_color');
         }     
     }
-   
 });
-
-
 function startPoints () {
-    const screenWidth = window.screen.width;
-    if (screenWidth <= 900) {
         circleButton[5].classList.add('circle_button_click');
         money[5].classList.add('orange_color');
         input.value = money[5].textContent.slice(1);
-    } else {
-        circleButton[2].classList.add('circle_button_click');
-        money[2].classList.add('orange_color');
-        input.value = money[2].textContent.slice(1);
-    }
-    console.log(money[2].textContent.slice(1))
 }
 startPoints();

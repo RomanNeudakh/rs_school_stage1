@@ -299,27 +299,37 @@ input[type=range]:focus::-moz-range-track {
     margin-right: 68px;
     z-index: 1;
 }
+.circle_button::before {
+    cursor: pointer;
+    content:'';
+    display: block;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0);
+    transform: translate(-50%, -37%);
+}
 /*--------------------------Удалить----------------------------*/
 .circle_button_click::before {
     cursor: pointer;
     content:'';
     display: block;
-    border: 2px #FE9013 solid;
+    border: 3px #FE9013 solid;
     border-radius: 50%;
     width: 23px;
     height: 23px;
-    transform: translate(-50%, -33%);
+    transform: translate(-50%, -37%);
     transition: 0.2s ease all;
 }
 .circle_button_click::after {
     cursor: pointer;
     content:'';
     display: block;
-    border: 2px #FE9013 solid;
+    border: 3px #FE9013 solid;
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -104%);
     transition: 0.2s ease all;
 }
 /*-----------------------------------------*/
@@ -328,23 +338,23 @@ input[type=range]:focus::-moz-range-track {
     cursor: pointer;
     content:'';
     display: block;
-    border: 2px #FE9013 solid;
+    border: 3px #FE9013 solid;
     border-radius: 50%;
     width: 23px;
     height: 23px;
-    transform: translate(-50%, -33%);
+    transform: translate(-50%, -37%);
     transition: 0.2s ease all;
 }
 .circle_button:hover::after {
     cursor: pointer;
     content: '';
     display: block;
-    border: 2px #FE9013 solid;
+    border: 3px #FE9013 solid;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     color: #FE9013;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -104%);
     transition: 0.2s ease all;
 }
 .input {
@@ -668,8 +678,10 @@ input[type=range]:focus::-moz-range-track {
     .footer_boxes .nav-item-header {
         margin-right: 20px;
     }
+    .donate_value {
+        flex-basis: 13.4%;
+    }
 }
-
 @media (max-width:  1080px) {
     .container {
         max-width: 960px;
@@ -1382,9 +1394,6 @@ input[type=range]:focus::-moz-range-track {
         width: 300px;
         height: 13.5px;
     }
-    .input_value_container {
-        display: none;
-    }
     .input_value_container_320 {
         display: flex;
         justify-content: space-between;
@@ -1498,7 +1507,18 @@ input[type=range]:focus::-moz-range-track {
     .footer_sosial div {
         margin-left: 11px;
     }
-    
+    .input_value_container {
+        margin-top: -10px;
+    }
+    .circle_button_click::before {
+        display: none;
+    }
+    .circle_button_click::after {
+        display: none;
+    }
+    .circle_button:hover::after {
+        display: none;
+    }
 }
 /*--------------------------------------Burger-menu--------------------------------------*/
 .burger_menu {
