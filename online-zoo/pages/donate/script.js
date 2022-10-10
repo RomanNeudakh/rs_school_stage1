@@ -20,3 +20,66 @@ burger_menu_container.addEventListener('click', (e) => {
         burger_menu_container.classList.toggle('burger_menu_container_active');
     }
 });
+let money = document.querySelectorAll('.donate_value');
+let circleButton = document.querySelectorAll('.circle_button');
+for (let index = 0; index < circleButton.length; index++) {
+    circleButton[index].addEventListener('click', () => {
+        circleButton.forEach(item => {
+            item.classList.remove('circle_button_click');
+        });
+        money.forEach(item => {
+            item.classList.remove('orange_color');
+        });
+        circleButton[index].classList.add('circle_button_click');
+        money[index].classList.add('orange_color');
+        input.value = money[index].textContent.slice(1);
+    });
+}
+/*--------------------------Ограничение 4 символа input amount--------------------------------*/
+let input = document.querySelector('.input_amount');
+let min = +input.min;
+let max = +input.max;
+
+input.addEventListener('input', (e) => {
+    let status = true;
+    const value = +input.value;
+    if (value > max) { input.value = max }
+    else if (value < min) { input.value = min }
+
+    circleButton.forEach(item => {
+        item.classList.remove('circle_button_click');
+    });
+    money.forEach(item => {
+        item.classList.remove('orange_color');
+    });
+
+    for (let index = 0; index < money.length; index++) {
+        if (input.value == money[index].textContent.slice(1)) {
+            circleButton.forEach(item => {
+                item.classList.remove('circle_button_click');
+            });
+            money.forEach(item => {
+                item.classList.remove('orange_color');
+            });
+            circleButton[index].classList.add('circle_button_click');
+            money[index].classList.add('orange_color');
+        }     
+    }
+   
+});
+
+
+function startPoints () {
+    const screenWidth = window.screen.width;
+    if (screenWidth <= 900) {
+        circleButton[5].classList.add('circle_button_click');
+        money[5].classList.add('orange_color');
+        input.value = money[5].textContent.slice(1);
+    } else {
+        circleButton[2].classList.add('circle_button_click');
+        money[2].classList.add('orange_color');
+        input.value = money[2].textContent.slice(1);
+    }
+    console.log(money[2].textContent.slice(1))
+}
+startPoints();
