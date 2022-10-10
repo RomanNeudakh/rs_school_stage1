@@ -790,7 +790,7 @@ input[type=range]::-moz-range-thumb {
 }
 @media (max-width:  1180px) {
     .animal_cards_container {
-        max-width: 1060px;
+        max-width: 970px;
     }
     .header-container .nav {
         margin-right: 34.8%;
@@ -950,6 +950,7 @@ input[type=range]::-moz-range-thumb {
     }
     .animal_cards_container {
         justify-content: center;
+        max-width: 940px;
     }
     .cards {
         margin-right: 24px;
@@ -2037,6 +2038,9 @@ input[type=range]::-moz-range-thumb {
 }
 .burger_menu_active .nav-link a {
     color: black;
+}
+.burger_menu_active .nav-link:hover {
+    color: orange;
 }
 .burger_menu_active .logo_svg img {
     top: 17.09px;

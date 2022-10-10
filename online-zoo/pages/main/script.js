@@ -137,11 +137,11 @@ right_arrow[1].addEventListener('click', clickRightArrow);
 
 let testimonialsArray = [
     {
-        photoUrl: '../../assets/icons/user_icon.png',
-        testimonialName: 'Michael John',
-        testimonialLocation: 'Local Austria',
-        testimonialTime: 'Today',
-        testimonialText: 'The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for'
+        photoUrl: '../../assets/icons/rick.png',
+        testimonialName: 'Rick Sanchez',
+        testimonialLocation: 'Unknown',
+        testimonialTime: 'Tomorrow',
+        testimonialText: 'I’m a scientist; because I invent, transform, create, and destroy for a living, and when I don’t like something about the world, I change it.'
     },
     {
         photoUrl: '../../assets/icons/oscar.png',
@@ -158,11 +158,11 @@ let testimonialsArray = [
         testimonialText: 'Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for'
     },
     {
-        photoUrl: '../../assets/icons/mila.png',
-        testimonialName: 'Mila Riksha',
-        testimonialLocation: 'Local Austria',
+        photoUrl: '../../assets/icons/homer.png',
+        testimonialName: 'Homer Simpson',
+        testimonialLocation: 'Springfild USA',
         testimonialTime: 'Yesterday',
-        testimonialText: ' My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf the ways to instill a love for animals.The best online zoo I’ve met. My son delighted very much ljves to watch gouillas. He best online zoo I’ve met. My son delighted very much ljves to watch gouillas. Online zoo is one jf'
+        testimonialText: 'I want to share something with you: The three little sentences that will get you through life. Number 1: Cover for me. Number 2: Oh, good idea, Boss! Number 3: It was like that when I got here. Simpson! Homer Simpson! He’s the greatest guy in his-tor-y.From the, town of Springfield! He’s about to hit a chestnut tree! Waaaah!'
     },
     {
         photoUrl: '../../assets/icons/greta.png',
@@ -197,7 +197,7 @@ let testimonialsArray = [
         testimonialName: 'Leonardo DiCaprio',
         testimonialLocation: 'Local USA',
         testimonialTime: 'Today',
-        testimonialText: 'I thank you all for this amazing award tonight. Let us not take this planet for granted. I do not take this night for granted.'
+        testimonialText: `Winning that ticket, Rose, was the best thing that ever happened to me. It brought me to you and I am thankful for that, Rose. I am thankful. You must do me this honour, Rose. Promise me you will survive, that you won't give up, no matter what happens, no matter how hopeless. promise me now, Rose, and never let go of that promise.`
     },
     {
         photoUrl: '../../assets/icons/biden.png',
