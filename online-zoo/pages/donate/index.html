@@ -49,6 +49,44 @@
         </div>
     </header>
     <main class="main">
+        <div class="burger_menu_container">
+            <div class="burger_menu">
+               <div class="burger_menu_header_container">
+                <a class="logo_svg" href="index.html">
+                    <div>
+                        <h2>PetStory online</h2>
+                        <img src="../../assets/icons/bamboo_orange.png" alt="bamboo">
+                    </div>
+                </a>
+                <div class="x_icon_orange">
+                    <img class="x_icon_orange_img" src="../../assets/icons/x_icon_orange.png" alt="x_icon">
+                </div>
+
+               </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item-header">
+                            <a href="index.html" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item-header">
+                            <a href="#" class="nav-link">Map</a>
+                        </li>
+                        <li class="nav-item-header">
+                            <a href="#" class="nav-link">Zoos</a>
+                        </li>
+                        <li class="nav-item-header">
+                            <a href="../../pages/donate/index.html" class="nav-link">Donate</a>
+                        </li>
+                        <li class="nav-item-header">
+                            <a href="#" class="nav-link">Contact us</a>
+                        </li>
+                        <li class="nav-item-header">
+                            <a class="nav-link" href="https://www.figma.com/file/jfEFwkXVj1WRq7sUHDr8os/PetStory-online?node-id=0%3A1">Designed by ©</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
         <section class="preview"> 
             <div class="container">
             </div> 
@@ -121,7 +159,7 @@
                                       
                                     </button> 
                                 </div>
-                                <input type="range" min="1" max="8" step="1" value="3">
+                                <input class="input_range_amount" type="range" min="1" max="8" step="1" value="3">
                             </div>
                             </div>
                     </div>
@@ -138,7 +176,7 @@
                 </div>
                 <div class="input_amount_container">
                     <img src="../../assets/icons/USD.png" alt="USD">
-                    <input class="input_amount" type="number" placeholder="  Another amount">
+                    <input class="input_amount" type="number" min="0" max="9999" placeholder="  Another amount">
                 </div>
                 <div class="radio_container">
                     <div class="form-group">
@@ -246,5 +284,6 @@
             </div>
         </div>
     </footer>
+    <script src="./script.js" ></script>
 </body>
 </html>
