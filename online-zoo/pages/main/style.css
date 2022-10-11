@@ -250,7 +250,7 @@ h1 {
     height: 62px;
     background: linear-gradient(113.96deg, #F9804B 1.49%, #FE9013 101.44%);
     border-radius: 50%;
-    z-index: 40;
+    z-index: 19;
 }
 .img_arrow {
     display: block;
