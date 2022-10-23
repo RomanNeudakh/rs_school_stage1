@@ -2,6 +2,8 @@
 //Создаем ограничевающий контейнер
 let body = document.querySelector('body');
 let container = document.createElement('div');
+let leadBordFromLocalStorage;
+let saveInformation;
 body.insertBefore(container, body.firstChild);
 container.classList.add('container');
 //Добавляем Header
@@ -15,7 +17,7 @@ let buttonStop = document.createElement('button');
 buttonStop.textContent = 'Stop';
 headerContainer.insertBefore(buttonStop, null).classList.add('button');
 let buttonSave = document.createElement('button');
-buttonSave.textContent = 'Save';
+localStorage.getItem('saveInform') ? buttonSave.textContent = 'Load' : buttonSave.textContent = 'Save';
 headerContainer.insertBefore(buttonSave, null).classList.add('button');
 let buttonResult = document.createElement('button');
 buttonResult.textContent = 'Results';
@@ -157,6 +159,23 @@ function frameFillingInit () {
         }
     }
 }
+function frameFillingLoad (array) {
+    matrixArray = array;
+    for (let i = 0; i < selectedSizeCurrent; i++) {
+        for (let j = 0; j < selectedSizeCurrent; j++) {
+            if (matrixArray[i][j] != '') {
+                let tiles = document.createElement('div');
+                field.insertBefore(tiles, null).classList.add('tile');
+                tiles.style.width = containerFieldWidth/selectedSizeCurrent + 'px';
+                tiles.style.height = containerFieldWidth/selectedSizeCurrent + 'px';
+                tiles.addEventListener('click', moveTiles);
+                tiles.textContent = `${matrixArray[i][j]}`;
+                tiles.style.left = j*containerFieldWidth/selectedSizeCurrent + 'px';
+                tiles.style.top = i*containerFieldWidth/selectedSizeCurrent + 'px';
+            }
+        }
+    }
+}
 //очистка поля 
 function clearField() {
     document.querySelectorAll('.tile').forEach(item => item.remove());
@@ -175,6 +194,9 @@ function moveTiles(params) {
                     document.querySelectorAll('.tile').forEach(item => item.removeEventListener('click', moveTiles)) // avoid to multiclick
                     movesCount();
                     setTimeout(() => document.querySelectorAll('.tile').forEach(item => item.addEventListener('click', moveTiles)), 700);
+                    if (winCheked()) {
+                        winAction();
+                     }
                     return true;
                 } else if (matrixArray[index - 1] && matrixArray[index - 1][i] == '') { //Вверх
                     audioPlay();
@@ -184,6 +206,9 @@ function moveTiles(params) {
                     document.querySelectorAll('.tile').forEach(item => item.removeEventListener('click', moveTiles));
                     movesCount();
                     setTimeout(() => document.querySelectorAll('.tile').forEach(item => item.addEventListener('click', moveTiles)), 700);
+                    if (winCheked()) {
+                        winAction();
+                     }
                     return matrixArray;
                 } else if (matrixArray[index][i - 1] == '') { //Влево
                     audioPlay();
@@ -193,6 +218,9 @@ function moveTiles(params) {
                     document.querySelectorAll('.tile').forEach(item => item.removeEventListener('click', moveTiles));
                     movesCount();
                     setTimeout(() => document.querySelectorAll('.tile').forEach(item => item.addEventListener('click', moveTiles)), 700);
+                    if (winCheked()) {
+                        winAction();
+                     }
                     return matrixArray;
                 } else if (matrixArray[index][i + 1] == '') { //Вправо
                     audioPlay();
@@ -202,6 +230,9 @@ function moveTiles(params) {
                     document.querySelectorAll('.tile').forEach(item => item.removeEventListener('click', moveTiles));
                     movesCount();
                     setTimeout(() => document.querySelectorAll('.tile').forEach(item => item.addEventListener('click', moveTiles)), 700);
+                    if (winCheked()) {
+                        winAction();
+                     }
                     return matrixArray;
                 }
             }
@@ -312,11 +343,281 @@ function solveCheked(array) {
             inversion += array.slice(index).filter(item => Number.isInteger(item) && item < element).length;
         });
         let emptyFloor = Math.floor(array.indexOf('')/selectedSizeCurrent);
-        return (inversion%2 == 1 && emptyFloor%2 == 1) || (inversion%2 == 0 && emptyFloor%2 == 0) ? true : false;
+        return (inversion%2 == 1 && emptyFloor%2 == 0) || (inversion%2 == 0 && emptyFloor%2 == 1) ? true : false;
     }
 }
 
-//Сохоранение
+
 //Таблица лидеров
+let popUpBoard = document.createElement('div');
+body.insertBefore(popUpBoard, container).classList.add('pop_up_board');
+let numberTable = document.createElement('div');
+popUpBoard.insertBefore(numberTable, null).classList.add('numberTable');
+let table = document.createElement('table');
+popUpBoard.insertBefore(table, null).classList.add('table');
+let closeButton = document.createElement('button');
+closeButton.textContent = 'Close';
+popUpBoard.insertBefore(closeButton, null).classList.add('closeButton');
+let tr = document.createElement('tr');
+table.insertBefore(tr, null).classList.add('tr');
+let th = document.createElement('th');
+th.textContent = '№';
+tr.insertBefore(th, null).classList.add('th');
+th = document.createElement('th');
+th.textContent = 'Name';
+tr.insertBefore(th, null).classList.add('th');
+th = document.createElement('th');
+th.onclick = sortMoves;
+th.textContent = 'Moves';
+tr.insertBefore(th, null).classList.add('th');
+th = document.createElement('th');
+th.onclick = sortTime;
+th.textContent = 'Time';
+tr.insertBefore(th, null).classList.add('th');
+let leadBord = [
+    {
+        name: 'Pipiconda',
+        moves: '999',
+        time: '99:59'
+    },
+    {
+        name: 'FunnyPiglet',
+        moves: '998',
+        time: '99:58'
+    },
+    {
+        name: 'MasterPanda',
+        moves: '997',
+        time: '99:57'
+    },
+    {
+        name: 'Pickle',
+        moves: '996',
+        time: '99:56'
+    },
+    {
+        name: 'DarkDencer',
+        moves: '995',
+        time: '99:55'
+    },
+    {
+        name: 'SlowTurtle',
+        moves: '994',
+        time: '99:54'
+    },
+    {
+        name: 'MisterTwister',
+        moves: '993',
+        time: '99:53'
+    },
+    {
+        name: 'EasyPeasy',
+        moves: '992',
+        time: '99:52'
+    },
+    {
+        name: 'KingOfPazzles',
+        moves: '991',
+        time: '99:51'
+    },
+    {
+        name: 'ForeverAlone',
+        moves: '990',
+        time: '99:50'
+    }
+];
+
+// localStorage.setItem('leadBord', JSON.stringify(leadBord));
+
+function bord () {
+    if (localStorage.getItem(`leadBord(${selectedSizeCurrent})`)) {
+        leadBordFromLocalStorage = JSON.parse(localStorage.getItem(`leadBord(${selectedSizeCurrent})`));
+        leadBordFromLocalStorage.forEach((item, index) => {
+            let tr = document.createElement('tr');
+            table.insertBefore(tr, null).classList.add('tr2');
+            let td = document.createElement('td');
+            td.textContent = `${index + 1}`;
+            tr.insertBefore(td, null).classList.add('td');
+            td = document.createElement('td');
+            td.textContent = `${item.name}`;
+            tr.insertBefore(td, null).classList.add('td');
+            td = document.createElement('td');
+            td.textContent = `${item.moves}`;
+            tr.insertBefore(td, null).classList.add('td');
+            td = document.createElement('td');
+            td.textContent = `${item.time}`;
+            tr.insertBefore(td, null).classList.add('td');
+        });
+    } else {
+        leadBord.forEach((item, index) => {
+            let tr = document.createElement('tr');
+            table.insertBefore(tr, null).classList.add('tr2');
+            let td = document.createElement('td');
+            td.textContent = `${index + 1}`;
+            tr.insertBefore(td, null).classList.add('td');
+            td = document.createElement('td');
+            td.textContent = `${item.name}`;
+            tr.insertBefore(td, null).classList.add('td');
+            td = document.createElement('td');
+            td.textContent = `${item.moves}`;
+            tr.insertBefore(td, null).classList.add('td');
+            td = document.createElement('td');
+            td.textContent = `${item.time}`;
+            tr.insertBefore(td, null).classList.add('td');
+        });
+    }
+    
+}
+
+function sortTime() {
+    if (leadBordFromLocalStorage) {
+        leadBordFromLocalStorage.sort(function(a, b) { return ((+a.time.slice(0, 2)*60 + a.time.slice(-2)) - (+b.time.slice(0, 2)*60 + b.time.slice(-2))); }); 
+    }
+    document.querySelectorAll('.tr2').forEach(item => item.remove());
+    bord();
+}
+
+function sortMoves() {
+    if (leadBordFromLocalStorage) {
+        leadBordFromLocalStorage.sort(function(a, b) { return a.moves - b.moves; });
+    }
+    document.querySelectorAll('.tr2').forEach(item => item.remove());
+    bord();
+}
+
+buttonResult.addEventListener('click', () => {
+    popUpBoard.classList.add('pop_up_board_active');
+    numberTable.textContent = `${selectedSizeCurrent}x${selectedSizeCurrent}`;
+    if (localStorage.getItem(`leadBord(${selectedSizeCurrent})`)) {
+        leadBordFromLocalStorage = JSON.parse(localStorage.getItem(`leadBord(${selectedSizeCurrent})`));
+        leadBordFromLocalStorage.sort(function(a, b) { return ((+a.time.slice(0, 2)*60 + a.time.slice(-2)) - (+b.time.slice(0, 2)*60 + b.time.slice(-2))); });
+        bord();
+    } else {
+        leadBord.sort(function(a, b) { return ((+a.time.slice(0, 2)*60 + a.time.slice(-2)) - (+b.time.slice(0, 2)*60 + b.time.slice(-2))); });
+    bord();
+    }
+});
+closeButton.addEventListener('click', () => {
+    popUpBoard.classList.remove('pop_up_board_active');
+    document.querySelectorAll('.tr2').forEach(item => item.remove());
+});
+popUpBoard.addEventListener('click', (e) => {
+    if (e.target == popUpBoard) {
+        popUpBoard.classList.remove('pop_up_board_active');
+        document.querySelectorAll('.tr2').forEach(item => item.remove());
+    }
+});
+
 //Сообщение о выйгрыше
-//плитки можно перетаскивать с помощью мыши
+let popUpWin = document.createElement('div');
+body.insertBefore(popUpWin, container).classList.add('pop_up_win');
+let messege = document.createElement('div');
+messege.textContent = `Hooray! You solved the puzzle in ${time} and ${moves} moves!`
+popUpWin.insertBefore(messege, null).classList.add('messege');
+let inputName = document.createElement('input');
+inputName.placeholder = 'Your name';
+popUpWin.insertBefore(inputName, null).classList.add('input');
+let closeButtonMessege = document.createElement('button');
+closeButtonMessege.textContent = 'Close';
+popUpWin.insertBefore(closeButtonMessege, null).classList.add('closeButtonWin');
+
+function winCheked() {
+    let winArr = [];
+    for (let index = 1; index < selectedSizeCurrent*selectedSizeCurrent; index++) {
+       winArr.push(index);
+    }
+    winArr.push('');
+    console.log(winArr, matrixArray);
+    return matrixArray.flat().toString() === winArr.toString() ? true : false;
+}
+function winAction() {
+    popUpWin.classList.add('pop_up_win_active');
+    messege.textContent = `Hooray! You solved the puzzle in ${time.textContent.slice(-5)} and ${moves.textContent.slice(7)}! Please enter your name!`;
+    stopTime();
+}
+function test() {
+    if (localStorage.getItem(`leadBord(${selectedSizeCurrent})`)) {
+        leadBordFromLocalStorage = JSON.parse(localStorage.getItem(`leadBord(${selectedSizeCurrent})`));
+        let moveString = moves.textContent.slice(7);
+        let timeString = time.textContent.slice(-5);
+        leadBordFromLocalStorage.push({
+            name: `${inputName.value}`,
+            moves: moveString,
+            time: timeString
+        })
+        leadBordFromLocalStorage.sort(function(a, b) { return ((+a.time.slice(0, 2)*60 + a.time.slice(-2)) - (+b.time.slice(0, 2)*60 + b.time.slice(-2)));});
+        leadBordFromLocalStorage =  leadBordFromLocalStorage.slice(0, -1);
+        localStorage.setItem(`leadBord(${selectedSizeCurrent})`, JSON.stringify(leadBordFromLocalStorage));
+    } else {
+        let moveString = moves.textContent.slice(7);
+        let timeString = time.textContent.slice(-5);
+        leadBord.push({
+            name: `${inputName.value}`,
+            moves: moveString,
+            time: timeString
+        })
+        leadBord.sort(function(a, b) { return ((+a.time.slice(0, 2)*60 + a.time.slice(-2)) - (+b.time.slice(0, 2)*60 + b.time.slice(-2)));});
+        leadBord = leadBord.slice(0, -1);
+        localStorage.setItem(`leadBord(${selectedSizeCurrent})`, JSON.stringify(leadBord));
+    } 
+}
+closeButtonMessege.addEventListener('click', () => {
+    if (inputName.value == '') {
+        alert('Enter your name')
+    } else {
+        popUpWin.classList.remove('pop_up_win_active');
+        test();
+    }
+    gameStatus = false;
+    clearField();
+    refMoves();
+    refTime();
+    frameFillingInit(selectedSizeCurrent);
+});
+popUpWin.addEventListener('click', (e) => {
+    if (e.target == popUpWin) {
+        if (inputName.value == '') {
+            alert('Enter your name')
+        } else {
+            popUpWin.classList.remove('pop_up_win_active');
+            test();
+        }
+        gameStatus = false;
+        clearField();
+        refMoves();
+        refTime();
+        frameFillingInit(selectedSizeCurrent);
+    }
+});
+
+//Сохранение
+buttonSave.addEventListener('click', () => {
+    if (buttonSave.textContent === 'Save') {
+        saveInformation = {
+            size: selectedSizeCurrent,
+            time: timeCounter,
+            moves: movesCounter,
+            matrix: matrixArray
+        }
+        buttonSave.textContent = 'Load';
+        localStorage.setItem('saveInform', JSON.stringify(saveInformation));
+    } else {
+        saveInformation = JSON.parse(localStorage.getItem('saveInform'));
+        localStorage.removeItem('saveInform')
+        buttonSave.textContent = 'Save';
+        gameStatus = true;
+        selectedSizeCurrent = saveInformation.size;
+        console.log(selectSize.options.selectedIndex);
+        selectSize.options.selectedIndex = selectedSizeArr.indexOf(selectedSizeCurrent);
+        console.log(selectSize.selectedIndex);
+        clearField();
+        movesCounter = saveInformation.moves - 1;
+        movesCount();
+        timeCounter = saveInformation.time;
+        stopTime();
+        timeStart();
+        frameFillingLoad(saveInformation.matrix);
+    }
+})
+
+//Плитки можно перетаскивать с помощью мыши
