@@ -81,7 +81,6 @@ function makeFrameArray(arraySize) {
     frameArray[frameArray.length - 1] = '';
     shuffle(frameArray);
     while (!solveCheked(frameArray)) {
-        console.log('перемешка')
         shuffle(frameArray);
     }
     let count = 0;
@@ -114,7 +113,9 @@ function resizeField(matrixArray) {
                 field.insertBefore(tiles, null).classList.add('tile');
                 tiles.style.width = containerFieldWidth/selectedSizeCurrent + 'px';
                 tiles.style.height = containerFieldWidth/selectedSizeCurrent + 'px';
-                tiles.addEventListener('click', moveTiles);
+                if (gameStatus == true) {
+                    tiles.addEventListener('click', moveTiles);
+                }
                 tiles.textContent = `${matrixArray[i][j]}`;
                 tiles.style.left = j*containerFieldWidth/selectedSizeCurrent + 'px';
                 tiles.style.top = i*containerFieldWidth/selectedSizeCurrent + 'px';
@@ -132,6 +133,7 @@ function frameFilling () {
                 field.insertBefore(tiles, null).classList.add('tile');
                 tiles.style.width = containerFieldWidth/selectedSizeCurrent + 'px';
                 tiles.style.height = containerFieldWidth/selectedSizeCurrent + 'px';
+                tiles.draggable = true;
                 tiles.addEventListener('click', moveTiles);
                 tiles.textContent = `${matrixArray[i][j]}`;
                 tiles.style.left = j*containerFieldWidth/selectedSizeCurrent + 'px';
@@ -139,7 +141,7 @@ function frameFilling () {
             }
         }
     }
-    
+    // drag();
 }
 // Начальное заполнение поля с неактивеными квадратами
 function frameFillingInit () {
@@ -294,13 +296,18 @@ buttonStop.addEventListener('click', () => {
     if (gameStatus == true) {
         if (buttonStop.textContent === 'Stop') {
             buttonStop.textContent = 'Continue';
+            gameStatus = false;
             stopTime();
             document.querySelectorAll('.tile').forEach(item => item.removeEventListener('click', moveTiles));
-        } else if (buttonStop.textContent === 'Continue') {
-            buttonStop.textContent = 'Stop';
-            timeStart();
-            document.querySelectorAll('.tile').forEach(item => item.addEventListener('click', moveTiles))
-        } 
+        }
+    } else if (gameStatus === false) {
+            if (buttonStop.textContent === 'Continue') {
+                buttonStop.textContent = 'Stop';
+                gameStatus = true;
+                stopTime();
+                timeStart();
+                document.querySelectorAll('.tile').forEach(item => item.addEventListener('click', moveTiles))
+            } 
     }
 });
 
@@ -346,7 +353,6 @@ function solveCheked(array) {
         return (inversion%2 == 1 && emptyFloor%2 == 0) || (inversion%2 == 0 && emptyFloor%2 == 1) ? true : false;
     }
 }
-
 
 //Таблица лидеров
 let popUpBoard = document.createElement('div');
@@ -527,12 +533,11 @@ function winCheked() {
        winArr.push(index);
     }
     winArr.push('');
-    console.log(winArr, matrixArray);
     return matrixArray.flat().toString() === winArr.toString() ? true : false;
 }
 function winAction() {
     popUpWin.classList.add('pop_up_win_active');
-    messege.textContent = `Hooray! You solved the puzzle in ${time.textContent.slice(-5)} and ${moves.textContent.slice(7)}! Please enter your name!`;
+    messege.textContent = `Hooray! You solved the puzzle in ${time.textContent.slice(-5)} and ${moves.textContent.slice(7)} moves! Please enter your name!`;
     stopTime();
 }
 function test() {
@@ -604,12 +609,11 @@ buttonSave.addEventListener('click', () => {
     } else {
         saveInformation = JSON.parse(localStorage.getItem('saveInform'));
         localStorage.removeItem('saveInform')
+        buttonStop.textContent = 'Stop';
         buttonSave.textContent = 'Save';
         gameStatus = true;
         selectedSizeCurrent = saveInformation.size;
-        console.log(selectSize.options.selectedIndex);
         selectSize.options.selectedIndex = selectedSizeArr.indexOf(selectedSizeCurrent);
-        console.log(selectSize.selectedIndex);
         clearField();
         movesCounter = saveInformation.moves - 1;
         movesCount();
@@ -621,3 +625,53 @@ buttonSave.addEventListener('click', () => {
 })
 
 //Плитки можно перетаскивать с помощью мыши
+
+
+
+// function drag() {
+//     let dragElements = document.querySelectorAll('.tile');
+//     dragElements.forEach(dragElement => {
+//         dragElement.addEventListener('dragstart', (e) => {
+//             console.log(e.path[0])
+//             // e.target.classList.add('dragging');
+//         })
+//     })
+// }
+
+
+
+
+// function drag() {
+//     //влево
+//     let dragElements = document.querySelectorAll('.tile');
+//     dragElements.forEach(dragElement => {
+//         dragElement.onmousedown = function(e) {
+//             let x = dragElement.offsetLeft;
+//             // console.log(dragElement.offsetLeft)
+
+//             function moveAt(pageX) {
+//                 if (pageX - field.offsetLeft < 0) {
+//                     x > 0 ? dragElement.style.left = x - 150 + 'px';
+//                 } else if (pageX - field.offsetLeft > x + dragElement.offsetWidth) {
+                    
+//                 }{
+//                     dragElement.style.left =  pageX - field.offsetLeft - dragElement.offsetWidth + 'px';
+//                 }
+                
+//             }
+//             document.onmousemove = function(e) {
+//                 moveAt(e.pageX);
+//             }
+//             window.onmouseup = function() {
+//                 if (dragElement.style.left - x > 100) {
+//                     dragElement.style.left = x + 150 + 'px'
+//                 }
+//                 document.onmousemove = null;
+//                 dragElement.onmouseup = null;
+//               }
+//               dragElement.ondragstart = function() {
+//                 return false;
+//               };
+//         }
+//     })
+// }
