@@ -12,5 +12,33 @@ export let mainLang = {
   '.start': {
     'RU': ['Старт'],
     'EN': ['Start']
+  },
+  '.massage': {
+    'RU': ['Тут пока ничего нет. Нажми кнопку "Старт" для начала игры или вернись на главную страницу.'],
+    'EN': ['There is nothing here yet. Press the "Start" button to start the game or return to the main page.']
+  },
+  '.score-name-header': {
+    'RU': ['Имя'],
+    'EN': ['Name']
+  },
+  '.score-count-header': {
+    'RU': ['Баллы'],
+    'EN': ['Points']
+  },
+  '.back-to-main': {
+    'RU': ['На главную страницу'],
+    'EN': ['Main page']
+  },
+  '.question-name': {
+    'RU': ['Разминка', 'Воробьиные', 'Лесные птицы', 'Певчие птицы', 'Хищные птицы', 'Морские птицы'],
+    'EN': ['Warm-up', 'Passeriformes', 'Forest Birds', 'Songbirds', 'Predator birds', 'Sea birds'],
+  },
+  '.next-button': {
+    'RU': ['Следующий вопрос'],
+    'EN': ['Next Level']
+  },
+  '.anotation-popup': {
+    'RU': ['Послушайте плеер и выберите птицу из списка'],
+    'EN': ['Listen to the player and select a bird from the list']
   }
 }

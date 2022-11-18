@@ -64,10 +64,15 @@ let birdName = document.querySelector('.bird-name'),
     songVolume = document.querySelector('.player-volume'),
     soundImg = document.querySelector('.sound-img'),
     progress = document.querySelector('.progress-filled'),
+    audioDuration = document.querySelector('.audio-duration'),
     birdData = birdsData.flat(),
-    numberCard = 1;
+    numberCard = 1,
+    birdSongDuration,
+    birdSongCurentTime,
+    loadedData;
 /*-----------------------CREATE CARD--------------------------------*/
 function createCard(lang) {
+  loadedData = false;
   birdName.textContent = `${birdData[numberCard - 1].name[lang]} (${birdData[numberCard - 1].species})`;
   anotation.textContent = `${birdData[numberCard - 1].description[lang]}`;
   birdImage.src = `${birdData[numberCard - 1].image}`;
@@ -76,6 +81,11 @@ function createCard(lang) {
   startButton.textContent = '►';
   songVolume.value = 1;
   soundImg.src = '../../assets/icon/sound.png';
+  audioDuration.textContent = '';
+  birdSong.onloadedmetadata = function() {
+    timeStatus();
+    loadedData = true;
+  };
   progress.style.flexBasis = 0;
 }
 
@@ -142,14 +152,28 @@ birdSong.addEventListener('timeupdate', handleProgress);
 function handleProgress() {
   const percent = (birdSong.currentTime / birdSong.duration) * 100;
   progress.style.flexBasis = `${percent}%`;
+  if (loadedData) {
+    timeStatus();
+  } else {
+    audioDuration.textContent = `Loading....`;
+  }
 }
+
 function scrub(e) {
   const scrubTime = (e.offsetX / progressContainer.offsetWidth) * birdSong.duration;
   birdSong.currentTime = scrubTime;
+  timeStatus();
 }
-
 
 progressContainer.addEventListener('click', scrub);
 progressContainer.addEventListener('mousemove', (e) => mousedown && scrub(e));
 progressContainer.addEventListener('mousedown', () => mousedown = true);
 progressContainer.addEventListener('mouseup', () => mousedown = false);
+
+/*----------------------------------TIME_STATUS--------------------------------------------*/
+function timeStatus() {
+  birdSongDuration = `${Math.floor(birdSong.duration/60) > 9 ? Math.floor(birdSong.duration/60) : '0' + Math.floor(birdSong.duration/60)}:${Math.round(birdSong.duration)%60 > 9 ? Math.round(birdSong.duration)%60 : '0' + Math.round(birdSong.duration)%60}`;
+  birdSongCurentTime = `${Math.floor(birdSong.currentTime/60) > 9 ? Math.floor(birdSong.currentTime/60) : '0' + Math.floor(birdSong.currentTime/60)}:${Math.round(birdSong.currentTime)%60 > 9 ? Math.round(birdSong.currentTime)%60 : '0' + Math.round(birdSong.currentTime)%60}`;
+  audioDuration.textContent = `${birdSongCurentTime}/${birdSongDuration}`;
+};
+
