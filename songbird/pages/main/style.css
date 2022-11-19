@@ -226,16 +226,15 @@ a {
 
 /*-----------------------------------burger-menu-----------------------------------*/
 .burger-menu-popup {
+  display: none;
   position: fixed;
   width:100%;
   min-height:100%;
   z-index: 20;
   background-color: rgba(0,0,0,0.5);
-  transform: scaleX(0%);
-  transition: transform 0.3s ease-in-out;  
 }
 .burger-menu-active {
-  transform: scaleX(100%);
+  display: block;
 }
 .burger-menu {
   width:100%;

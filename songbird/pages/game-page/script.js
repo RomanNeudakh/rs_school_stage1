@@ -128,6 +128,7 @@ choiseBird.forEach((item,index) => {
     pressAnswer(index);
   } );
 });
+
 function pressAnswer (index) {
   if (!popup.classList.contains('hide') ) {
     anotationContainerHeader.classList.toggle('hide');
