@@ -40,5 +40,9 @@ export let mainLang = {
   '.anotation-popup': {
     'RU': ['Послушайте плеер и выберите птицу из списка'],
     'EN': ['Listen to the player and select a bird from the list']
+  },
+  '.score': {
+    'RU': ['Счет'],
+    'EN': ['Score']
   }
 }

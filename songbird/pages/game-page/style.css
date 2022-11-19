@@ -30,7 +30,7 @@ a {
   font-size: 24px;
 }
 .current-bird-img {
-  width: 230px;
+  min-width: 230px;
   height: 170px;
   border-radius: 10px;
 }
@@ -92,6 +92,7 @@ a {
   color: yellow;
 }
 .circle {
+  position: relative;
   width: 24px;
   height: 24px;
   margin-right: 20px;
@@ -102,9 +103,17 @@ a {
   transform: scale(0.9);
   color: yellow;
 }
+.answer:hover + .circle {
+  transform: scale(0.9);
+  color: yellow;
+}
+.circle:hover {
+  transform: scale(0.9);
+  color: yellow;
+}
 .anotation-container {
   flex: 0 1 100%;
-  padding: 10px;
+  padding: 20px;
 }
 .anotation-container-header {
   display: flex;
@@ -116,10 +125,21 @@ a {
 .next-button {
   margin-top: 15px;
   text-align: center;
-  background-color: #c6729e;
+  background-color: grey;
   font-size: 24px;
   border-radius: 20px;
   padding: 10px;
+  cursor: pointer;
+}
+.answer-status {
+  position: absolute;
+  width: 40px;
+  left: -8px;
+  right: 0;
+  top: -11px;
+}
+.score {
+  font-size: 24px;
 }
 /*-----------------------PLAYER------------------*/
 .player {
