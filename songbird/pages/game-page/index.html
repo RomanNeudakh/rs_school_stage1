@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../assets/icon/favicon.ico">
+  <link rel="stylesheet" href="../../assets/styles/normalize.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Songbird</title>
+</head>
+<body>
+  <div class="popup-massage hide">
+    <div class="popup-massage-container">
+      <p class="massage-game"></p>
+      <p class="enter-name"></p>
+      <input type="text" maxlength="15" class="input-name">
+      <div class="buttons-container">
+        <a class="play-again"href="../game-page/index.html"></a>
+        <a class="stay" href="#"></a> 
+        <a class="to-results" href="../results/index.html"></a> 
+      </div>
+    </div>
+  </div> 
+  <div class="burger-menu-popup">
+    <div class="burger-menu">
+      <div class="burger-header">
+        <a href="./index.html" class="logo">
+          <img src="../../assets/icon/logo.png" alt="logo" class="logo-img">
+        </a>
+        <div class="x-icon-orange">
+            <img class="x-icon" src="../../assets/icon/x-icon.png" alt="x_icon">
+        </div>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item-header">
+                <a href="../main/index.html" class="nav-link"></a>
+            </li>
+            <li class="nav-item-header">
+                <a href="../gallery/index.html" class="nav-link"></a>
+            </li>
+            <li class="nav-item-header">
+                <a href="../results/index.html" class="nav-link"></a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="wrapper">
+    <header> 
+      <div class="container">
+        <div class="header">
+          <a href="../main/index.html" class="logo">
+            <img src="../../assets/icon/logo.png" alt="logo" class="logo-img">
+          </a>
+          <nav class="nav">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="../main/index.html" class="nav-link"></a> 
+              </li>
+              <li class="nav-item">
+                <a href="../gallery/index.html" class="nav-link"></a> 
+              </li>
+              <li class="nav-item">
+                <a href="../results/index.html" class="nav-link"></a> 
+              </li>
+            </ul>
+          </nav>
+            <img src="../../assets/icon/burger-menu.png" alt="burger-menu" class="burger-icon">
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <img src="../../assets/images/bird-left.png" alt="bird" class="bird-left">
+      <img src="../../assets/images/bird-right.png" alt="bird" class="bird-right">
+      <div class="container">
+        <div class="game-container">
+          <div class="game-header">
+            <div class="question-name"></div>
+            <div class="question-name"></div>
+            <div class="question-name"></div>
+            <div class="question-name"></div>
+            <div class="question-name"></div>
+            <div class="question-name"></div>
+          </div>
+          <div class="current-question">
+            <img src="#" alt="bird" class="current-bird-img">
+            <div class="current-audio-section">
+              <div class="score"></div>
+              <div class="current-bird-name">******</div>
+              <div class="player">
+                <audio loop class="audio" src="#"></audio>
+                <div class="audio-controlls">
+                  <div class="progress-container">
+                    <button class="player-button">►</button>
+                    <div class="progress">
+                      <div class="audio-duration"></div>
+                      <div class="progress-filled"></div>
+                    </div>
+                  </div>
+                  <div class="sound-container">
+                    <img src="../../assets/icon/sound.png" alt="sound" class="sound-img">
+                    <input type="range" name="volume" class="player-volume" min="0" max="1" step="0.05" value="1">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="answers-anotation">
+            <div class="answers">
+              <div class="answer-container">
+                <div class="circle"><img src="#" alt="status" class="answer-status hide"></div>
+                <div class="answer"></div>
+              </div>
+              <div class="answer-container">
+                <div class="circle"><img src="#" alt="status" class="answer-status hide"></div>
+                <div class="answer"></div>
+              </div>
+              <div class="answer-container">
+                <div class="circle"><img src="#" alt="status" class="answer-status hide"></div>
+                <div class="answer"></div>
+              </div>
+              <div class="answer-container">
+                <div class="circle"><img src="#" alt="status" class="answer-status hide"></div>
+                <div class="answer"></div>
+              </div>
+              <div class="answer-container">
+                <div class="circle"><img src="#" alt="status" class="answer-status hide"></div>
+                <div class="answer"></div>
+              </div>
+              <div class="answer-container">
+                <div class="circle"><img src="#" alt="status" class="answer-status hide"></div>
+                <div class="answer"></div>
+              </div>
+            </div>
+            <div class="anotation-container">
+              <div class="anotation-popup hide"></div>
+              <div class="anotation-container-header">
+                <img src="#" alt="bird" class="current-bird-img">
+                <div class="current-audio-section">
+                  <div class="current-bird-name"></div>
+                  <div class="player">
+                    <audio loop class="audio" src="#"></audio>
+                    <div class="audio-controlls">
+                      <div class="progress-container">
+                        <button class="player-button">►</button>
+                        <div class="progress">
+                          <div class="audio-duration"></div>
+                          <div class="progress-filled"></div>
+                        </div>
+                      </div>
+                      <div class="sound-container">
+                        <img src="../../assets/icon/sound.png" alt="sound" class="sound-img">
+                        <input type="range" name="volume" class="player-volume" min="0" max="1" step="0.05" value="1">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p class="anotation-text"></p>
+            </div>
+          </div>
+          <div class="next-button">
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <a href="https://rs.school/js/" class="rs-school">
+          <img class="rs-school" src="../../assets/icon/rs_school_js.png" alt="rs-school">
+        </a>
+        <a href="https://github.com/RomZeZZZ" class="git-hub">
+          <div class="year">
+            2022
+          </div>
+          <img src="../../assets/icon/git-logo.png" alt="git-Logo">
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="./script.js" ></script>
+</body>
+</html>
