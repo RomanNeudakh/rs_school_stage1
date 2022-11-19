@@ -44,5 +44,29 @@ export let mainLang = {
   '.score': {
     'RU': ['Счет'],
     'EN': ['Score']
+  },
+  '.stay': {
+    'RU': ['Остаться'],
+    'EN': ['Stay here']
+  },
+  '.play-again': {
+    'RU': ['Играть еще раз'],
+    'EN': ['Play again']
+  },
+  '.to-results': {
+    'RU': ['К результатам'],
+    'EN': ['To results']
+  },
+  'win-massege': {
+    'RU': ['Поздравляю! Ты прошел викторину и набрал *** баллов!'],
+    'EN': ['Congratulations! You passed the quiz and scored *** points!']
+  },
+  'win-massege-max-points': {
+    'RU': ['Поздравляю! Ты прошел викторину и набрал максимальное баллов!'],
+    'EN': ['Congratulations! You passed the quiz and got the highest score!'],
+  },
+  '.enter-name': {
+    'RU': ['Пожалуйста, введи свое имя:'],
+    'EN': ['Please enter yur name:']
   }
 }

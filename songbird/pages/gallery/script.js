@@ -23,6 +23,7 @@ function burgerMenu() {
     burgerMenuPopup.classList.toggle('burger-menu-active');
   }
 }
+
 burgerMenu();
 
 /*---------------------SELECT LANG----------------------------------*/
@@ -41,7 +42,9 @@ function changeLang() {
     createContent('RU');
   }
 }
+
 changeLang();
+
 function createContent(lang) {
   for (let key in mainLang) {
     document.querySelectorAll(key).forEach((item, index) => {
@@ -70,6 +73,7 @@ let birdName = document.querySelector('.bird-name'),
     birdSongDuration,
     birdSongCurentTime,
     loadedData;
+    
 /*-----------------------CREATE CARD--------------------------------*/
 function createCard(lang) {
   loadedData = false;

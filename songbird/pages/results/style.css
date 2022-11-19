@@ -1,7 +1,7 @@
 html {
   scroll-behavior: smooth; 
   min-height: 100vh;
-  min-width: 340px;
+  min-width: 300px;
 }
 body {
   font-family: 'Caveat', cursive;
@@ -47,10 +47,12 @@ a {
 .score-container {
   display: flex;
   flex-direction: column;
+  max-width: 640px;
+  margin: 0 auto;
 }
 .score-row {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .score-name, .score-name-header {
   font-size: 36px;

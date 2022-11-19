@@ -21,8 +21,8 @@ export class BirdPlayer {
   }
   loadAudio(){
     this.birdSong.onloadedmetadata = (event) => {
-      this.loadedData = true;
-      this.timeStatus();
+    this.loadedData = true;
+    this.timeStatus();
     };
   }
   setSrc(src) {

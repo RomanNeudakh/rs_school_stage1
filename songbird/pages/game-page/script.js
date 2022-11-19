@@ -2,7 +2,8 @@
 
 import {mainLang} from '../../assets/localization/main-page-lang.js';
 import {birdsData} from '../../assets/localization/birdsData.js';
-import {BirdPlayer} from '../../pages/game-page/playerClass.js';
+import {BirdPlayer} from '../../assets/localization/playerClass.js';
+
 
 let burgerIcon = document.querySelector('.burger-icon'),
     burgerMenuPopup = document.querySelector('.burger-menu-popup'),
@@ -54,45 +55,32 @@ function createContent(lang) {
   }
 }
 
-/*--------------------------RESULTS--------------------------*/
-let popupMassage = document.querySelector('.popup-massage');
-
-function showMassege() {
-  if (!localStorage.getItem('results')) {
-    // popupMassage.classList.remove('hide');
-  } else {
-
-  }
-}
-
-showMassege();
-
-
 /*-------------------------INIT---------------------*/
-let questionNumber = 0;
-let totalPoints = 0;
-let countAnswers;
-let questionAnswered;
-let score = document.querySelector('.score');
-let questionHeader = document.querySelectorAll('.question-name');
-let currentBird = document.querySelectorAll('.current-bird-img');
-let birdSong = document.querySelectorAll('.audio');
-let answers = document.querySelectorAll('.answer');
-let popup = document.querySelector('.anotation-popup');
-let anotationContainerHeader = document.querySelector('.anotation-container-header');
-let anotationText = document.querySelector('.anotation-text');
-let nextButton = document.querySelector('.next-button');
-let currentBirdName = document.querySelectorAll('.current-bird-name');
-let rightBird;
+let questionNumber = 0,
+    totalPoints = 0,
+    countAnswers,
+    questionAnswered,
+    score = document.querySelector('.score'),
+    questionHeader = document.querySelectorAll('.question-name'),
+    currentBird = document.querySelectorAll('.current-bird-img'),
+    birdSong = document.querySelectorAll('.audio'),
+    answers = document.querySelectorAll('.answer'),
+    popup = document.querySelector('.anotation-popup'),
+    anotationContainerHeader = document.querySelector('.anotation-container-header'),
+    anotationText = document.querySelector('.anotation-text'),
+    nextButton = document.querySelector('.next-button'),
+    currentBirdName = document.querySelectorAll('.current-bird-name'),
+    rightBird;
+
 /*-----------FOR_PLAYER--------------*/
 let startButton = document.querySelectorAll('.player-button'),
     songVolume = document.querySelectorAll('.player-volume'),
     soundImg = document.querySelectorAll('.sound-img'),
     progress = document.querySelectorAll('.progress-filled'),
-    audioDuration = document.querySelectorAll('.audio-duration');
-let progressContainer = document.querySelectorAll('.progress');
-let choiseBird = document.querySelectorAll('.answer-container');
-let answerStatus = document.querySelectorAll('.answer-status');
+    audioDuration = document.querySelectorAll('.audio-duration'),
+    progressContainer = document.querySelectorAll('.progress'),
+    choiseBird = document.querySelectorAll('.answer-container'),
+    answerStatus = document.querySelectorAll('.answer-status');
 
 let player1 = new BirdPlayer(birdSong[0], startButton[0], songVolume[0], soundImg[0], progress[0], audioDuration[0], progressContainer[0]);
 player1.enableListeners();
@@ -110,10 +98,7 @@ function initFunction(lang) {
   questionAnswered = false;
   rightBird = getRandom(0, 5);
   score.textContent = `${mainLang['.score'][lang]}: ${totalPoints}`;
-  if (questionNumber > 0) {
-    questionHeader[questionNumber - 1].style.color = '#ffc600';
-  }
-  questionHeader[questionNumber].style.color = 'rgba(0,0,0,0.5)';
+  questionHeader[questionNumber].style = 'background-color: #37a74f;';
   currentBird[0].src = '../../assets/images/black-bird.png';
   answers.forEach((item, index) => {
     item.textContent = `${birdsData[questionNumber][index].name[lang]}`
@@ -137,16 +122,12 @@ function initFunction(lang) {
 
 initFunction(currentLang);
 
-
 /*--------------------ANSWER------------------------*/
-
-
 choiseBird.forEach((item,index) => {
   item.addEventListener('click', () => {
     pressAnswer(index);
   } );
 });
-
 function pressAnswer (index) {
   if (!popup.classList.contains('hide') ) {
     anotationContainerHeader.classList.toggle('hide');
@@ -172,19 +153,54 @@ function pressAnswer (index) {
       questionAnswered = true;
       totalPoints += 5 - countAnswers;
       score.textContent = `${mainLang['.score'][currentLang]}: ${totalPoints}`;
-      nextButton.style = 'background-color: #37a74f';
-      nextButton.addEventListener('click', nextRound)
-
-
+      console.log(questionNumber)
+      if (questionNumber == 5) {
+        endGame();
+      } else {
+        nextButton.style = 'background-color: #37a74f';
+        nextButton.addEventListener('click', nextRound);
+      };
     } else {
-      countAnswers++;
+      if (answerStatus[index].classList.contains('hide') ) {
+        countAnswers++;
+        answerStatus[index].classList.remove('hide');
+        answerStatus[index].src = '../../assets/icon/wrong.png';
+      } 
       answerWrong.currentTime = 0;
       audioPlay(answerWrong);
-      answerStatus[index].src = '../../assets/icon/wrong.png';
-      answerStatus[index].classList.remove('hide');
     }
   }
 }
+
+/*----------------------------END_GAME-------------------*/
+let popupMassageContainer = document.querySelector('.popup-massage');
+let popupMassage = document.querySelector('.massage-game');
+let playAgainButton = document.querySelector('.play-again');
+let stay = document.querySelector('.stay');
+let inputName = document.querySelector('.input-name');
+
+let results = localStorage.getItem('results') ? JSON.parse(localStorage.getItem(`results`)) : [];
+function endGame() {
+  stay.addEventListener('click', () => {
+    popupMassageContainer.classList.add('hide');
+  });
+  if (totalPoints == 30) {
+    popupMassage.textContent = `${mainLang['win-massege-max-points'][currentLang]}`;
+    playAgainButton.classList.add('hide');
+  } else {
+    popupMassage.textContent = `${mainLang['win-massege'][currentLang]}`.replace('***', `${totalPoints}`);
+  }
+  beforeUnloaded();
+  popupMassageContainer.classList.remove('hide');
+}
+
+function beforeUnloaded () {
+  window.addEventListener('beforeunload', (event) => {
+    results.push([inputName.value == '' ? 'Uknown player' : inputName.value, totalPoints]);
+    localStorage.setItem(`results`, JSON.stringify(results));
+  });
+}
+
 /*----------------------NEXT_ROUND_FUNC------------------*/
 function nextRound () {
   questionNumber++;
@@ -192,91 +208,22 @@ function nextRound () {
   nextButton.removeEventListener('click', nextRound);
   initFunction(currentLang);
 }
+
 /*----------------------------Взаимоисключение воспроизведения---------------------------------*/
 startButton[0].addEventListener('click', () => {player2.stopSong(false);});
 startButton[1].addEventListener('click', () => {player1.stopSong(false);});
 
 /*-----------------------------ANSWERS_SOUND-----------------------------------------------*/
-var answerOK = new Audio();
+let answerOK = new Audio();
     answerOK.preload = 'auto';
-    answerOK.volume = 1;
+    answerOK.volume = 0.1;
     answerOK.src = '../../assets/audio/ok.mp3';
-var answerWrong = new Audio();
+let answerWrong = new Audio();
     answerWrong.preload = 'auto';
-    answerWrong.volume = 1;
+    answerWrong.volume = 0.1;
     answerWrong.src = '../../assets/audio/wrong.mp3';
 
 function audioPlay(audio) {
     audio.play(); 
 }
 
-
-/*--------------------------------PLAYER--------------------------*/
-
-/*-----------------------------STOP-PLAY-------------------------------------*/
-// startButton.addEventListener('click', stopSong);
-//startButton[0].addEventListener('click', () => {player1.stopSong();});
-
-// function stopSong () {
-//   if (birdSong.paused) {
-//     startButton.textContent = '❚❚';
-//     birdSong.play();
-//   } else {
-//     startButton.textContent = '►';
-//     birdSong.pause();
-//   }
-// }
-
-/*----------------------------SONG_VOLUME----------------------------*/
-// songVolume.addEventListener('change', () => {player1.changeVolume();});
-// songVolume.addEventListener('mousemove', () => {player1.changeVolume();});
-// soundImg.addEventListener('click', () => {player1.offVolume()});
-
-// function changeVolume() {
-//   songVolume.value == 0 ? soundImg.src = '../../assets/icon/sound-off.png' : soundImg.src = '../../assets/icon/sound.png';
-//   birdSong.volume = songVolume.value;
-// }
-
-// function offVolume() {
-//   if (songVolume.value == 0) {
-//     birdSong.volume = 0.5;
-//     songVolume.value = 0.5;
-//     soundImg.src = '../../assets/icon/sound.png';
-//   } else {
-//     birdSong.volume = 0;
-//     songVolume.value = 0;
-//     soundImg.src = '../../assets/icon/sound-off.png';
-//   }
-// }
-
-/*-----------------------PROGRESS FIELD---------------------------------*/
-
-// birdSong[0].addEventListener('timeupdate', () => {player1.handleProgress()});
-
-// function handleProgress() {
-//   const percent = (birdSong.currentTime / birdSong.duration) * 100;
-//   progress.style.flexBasis = `${percent}%`;
-//   if (loadedData) {
-//     timeStatus();
-//   } else {
-//     audioDuration.textContent = `Loading....`;
-//   }
-// }
-
-// function scrub(e) {
-//   const scrubTime = (e.offsetX / progressContainer.offsetWidth) * birdSong.duration;
-//   birdSong.currentTime = scrubTime;
-//   timeStatus();
-// }
-
-// progressContainer.addEventListener('click', (e) => {player1.scrub(e)});
-// progressContainer.addEventListener('mousemove', (e) => mousedown && player1.scrub(e));
-// progressContainer.addEventListener('mousedown', () => mousedown = true);
-// progressContainer.addEventListener('mouseup', () => mousedown = false);
-
-/*----------------------------------TIME_STATUS--------------------------------------------*/
-// function timeStatus() {
-//   const birdSongDuration = `${Math.floor(birdSong.duration/60) > 9 ? Math.floor(birdSong.duration/60) : '0' + Math.floor(birdSong.duration/60)}:${Math.round(birdSong.duration)%60 > 9 ? Math.round(birdSong.duration)%60 : '0' + Math.round(birdSong.duration)%60}`;
-//   const birdSongCurentTime = `${Math.floor(birdSong.currentTime/60) > 9 ? Math.floor(birdSong.currentTime/60) : '0' + Math.floor(birdSong.currentTime/60)}:${Math.round(birdSong.currentTime)%60 > 9 ? Math.round(birdSong.currentTime)%60 : '0' + Math.round(birdSong.currentTime)%60}`;
-//   audioDuration.textContent = `${birdSongCurentTime}/${birdSongDuration}`;
-// };

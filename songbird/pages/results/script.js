@@ -2,7 +2,6 @@
 
 import {mainLang} from '../../assets/localization/main-page-lang.js';
 
-
 let burgerIcon = document.querySelector('.burger-icon'),
     burgerMenuPopup = document.querySelector('.burger-menu-popup'),
     closeIcon = document.querySelector('.x-icon'),
@@ -22,6 +21,7 @@ function burgerMenu() {
     burgerMenuPopup.classList.toggle('burger-menu-active');
   }
 }
+
 burgerMenu();
 
 /*---------------------SELECT LANG----------------------------------*/
@@ -40,7 +40,9 @@ function changeLang() {
     createContent('RU');
   }
 }
+
 changeLang();
+
 function createContent(lang) {
   for (let key in mainLang) {
     document.querySelectorAll(key).forEach((item, index) => {
@@ -53,15 +55,31 @@ function createContent(lang) {
   }
 }
 
-/*--------------------------RESULTS--------------------------*/
+/*--------------------------RESULTS_POPUP--------------------------*/
 let popupMassage = document.querySelector('.popup-massage');
 
 function showMassege() {
   if (!localStorage.getItem('results')) {
     popupMassage.classList.remove('hide');
   } else {
-
+    createBoard();
   }
 }
 
 showMassege();
+
+/*--------------------------CREATE_PAGE--------------------------*/
+function createBoard() {
+  let scoreContainer = document.querySelector('.score-container');
+  let resultsArr = (JSON.parse(localStorage.getItem('results')).sort((x, y) => y[1] - x[1])).slice(0, 10);
+  resultsArr.forEach((item, index) => {
+    let scoreRow = document.createElement('div');
+    scoreContainer.insertBefore(scoreRow, null).classList.add('score-row');
+    let scoreName = document.createElement('div');
+    scoreRow.insertBefore(scoreName, null).classList.add('score-name');
+    scoreName.textContent = `${index + 1 + '.' + '  ' + item[0]}`;
+    let scoreCount = document.createElement('div');
+    scoreRow.insertBefore(scoreCount, null).classList.add('score-count');
+    scoreCount.textContent = `${item[1]}`;
+  });
+}
