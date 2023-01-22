@@ -24,7 +24,7 @@ export const garage = `
             <div class="main_container-garage_update">
                 <input type="text" class="main_container-garage_update_input-text">
                 <input type="color" class="main_container-garage_update_input-color">
-                <button class="main_container-garage_update_button-update">UPDATE</button>
+                <button id="update" class="main_container-garage_update_button-update">UPDATE</button>
             </div>
             <div class="main_container-garage_control">
                 <button class="main_container-garage_race-button">RACE</button>
@@ -37,7 +37,7 @@ export const garage = `
 
             </div>
             <div class="main_container-garage_input">
-                Winners per page: <input type="number" min="1" max="10" placeholder="sad" 
+                Winners per page: <input id="cars_per_page" type="number" min="1" max="10" placeholder="" 
                 class="main_container-garage_input_winners-per-page">
             </div>
             <div class="main_container-garage_nav-pagination">

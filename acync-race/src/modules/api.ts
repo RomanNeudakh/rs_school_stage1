@@ -80,8 +80,8 @@ export const deleteWinner = async (id: number) => {
                 return response.json();
             }
         })
-        .catch((error) => {
-            console.log(error);
+        .catch(() => {
+            console.log(`car is not in winner list`);
         });
 };
 
@@ -93,12 +93,37 @@ export const createCar = async (data: INewCar) => {
         },
         body: JSON.stringify(data),
     };
-    const response = await fetch(`${root_garage}`, options);
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const json = await response.json();
-    return json;
+    return await fetch(`${root_garage}`, options)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                return response.json();
+            }
+        })
+        .catch(() => {
+            console.log(`car not found`);
+        });
+};
+export const updateCar = async (id: number, data: INewCar) => {
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+    return await fetch(`${root_garage}/${id}`, options)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                return response.json();
+            }
+        })
+        .catch(() => {
+            console.log(`car not found`);
+        });
 };
 // const data: IWinnersArray = {
 //     id: 4,

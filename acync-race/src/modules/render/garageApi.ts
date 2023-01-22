@@ -1,4 +1,4 @@
-import { createCar, deleteCar, deleteWinner } from '../api';
+import { createCar, deleteCar, deleteWinner, updateCar } from '../api';
 import { carsFirstName, carsLastName } from '../const';
 import { INewCar } from '../inerfeses';
 import { variables } from '../variables';
@@ -25,22 +25,46 @@ export const createNewCar = async () => {
         }
         variables.allCarsCount = variables.allCarsCount + 1;
         carsCount.textContent = `Garage(${variables.allCarsCount})`;
+        variables.inputCreate = '';
         inputCreate.value = '';
+    }
+};
+export const buttonUpdateCar = async () => {
+    const inputUpdate = document.querySelector('.main_container-garage_update_input-text') as HTMLInputElement;
+    const inputColorUpdate = document.querySelector('.main_container-garage_update_input-color') as HTMLInputElement;
+    if (inputUpdate.value === '') {
+        inputUpdate.classList.add('error');
+        setTimeout(() => {
+            inputUpdate.classList.remove('error');
+        }, 1000);
+    } else {
+        const data: INewCar = {
+            color: inputColorUpdate.value,
+            name: inputUpdate.value,
+        };
+        const updateCarData = await updateCar(variables.selectedCarId, data);
+        updateActive(false);
+        variables.inputUpdate = '';
+        inputUpdate.value = '';
+        if (updateCarData) {
+            await renderCars();
+        }
     }
 };
 export const deleteCarButton = async (id: number) => {
     await deleteCar(id);
     await deleteWinner(id);
-    // if (await getWinner(id)) {
-    //     await deleteWinner(id);
-    // }
+    const allCars = document.querySelectorAll('.main_container-garage_track_car-container');
+    if (allCars.length === 1) {
+        variables.carsPage = variables.carsPage === 1 ? 1 : variables.carsPage - 1;
+    }
     renderCars();
 };
 export const htmlSingleCar = (id: number, name: string, color: string) => {
     return `
     <div id="${id}" class="main_container-garage_track_car-container"> 
       <div class="main_container-garage_track_car-container_buttons-container">
-        <button id="select" class="main_container-garage_track_car-container_buttons-container_select">SELECT</button>
+        <button data-idcar="${id}" id="select" class="main_container-garage_track_car-container_buttons-container_select">SELECT</button>
         <button data-idcar="${id}" id="remove" class="main_container-garage_track_car-container_buttons-container_remove">REMOVE</button>
         <button id="start" class="main_container-garage_track_car-container_buttons-container_engine-start">START</button>
         <button id="stop" class="main_container-garage_track_car-container_buttons-container_engine-stop">STOP</button>
@@ -97,6 +121,26 @@ export const htmlSingleCar = (id: number, name: string, color: string) => {
     </div>
   `;
 };
+export const createRandomCars = async () => {
+    const carsCount = document.querySelector('.main_container-garage_winners-count') as HTMLInputElement;
+    for (let index = 0; index < 10; index++) {
+        const allCars = document.querySelectorAll('.main_container-garage_track_car-container');
+        const track = document.querySelector('.main_container-garage_track') as HTMLElement;
+        const data: INewCar = {
+            color: getRandomColor(),
+            name: getRandomCarName(),
+        };
+        const newCarData = await createCar(data);
+        if (allCars && allCars.length < variables.limitCars) {
+            track.innerHTML += htmlSingleCar(newCarData.id, newCarData.name, newCarData.color);
+        }
+        if (newCarData) {
+            variables.allCarsCount = variables.allCarsCount + 1;
+        }
+    }
+    carsCount.textContent = `Garage(${variables.allCarsCount})`;
+};
+
 export function getRandomElement(array: string[]) {
     const randomIndex = Math.floor(Math.random() * array.length);
     return array[randomIndex];
@@ -111,4 +155,22 @@ export function getRandomColor() {
 }
 export function getRandomCarName() {
     return `${getRandomElement(carsFirstName)} ${getRandomElement(carsLastName)} `;
+}
+
+export function updateActive(flag: boolean) {
+    const buttons = document.querySelectorAll('button');
+    const inputCreate = document.querySelector('.main_container-garage_create_input-text') as HTMLInputElement;
+    const inputUpdate = document.querySelector('.main_container-garage_update_input-text') as HTMLInputElement;
+    inputCreate.disabled = flag ? true : false;
+    inputUpdate.disabled = flag ? false : true;
+    inputCreate.value = variables.inputCreate;
+    inputUpdate.value = variables.inputUpdate;
+    variables.selectButtonIsActive = flag;
+    for (let i = 0; i < buttons.length; i++) {
+        if (buttons[i].id === 'update') {
+            buttons[i].disabled = flag ? false : true;
+        } else {
+            buttons[i].disabled = flag ? true : false;
+        }
+    }
 }

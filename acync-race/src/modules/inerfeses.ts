@@ -26,6 +26,11 @@ export interface IAllVariables {
     allCarsCount: number;
     sortWinners: 'id' | 'wins' | 'time';
     orderWinners: 'ASC' | 'DESC';
+    selectButtonIsActive: boolean;
+    selectedCarId: number;
+    inputCreate: string;
+    inputUpdate: string;
+    [key: string]: any; 
 }
 export interface IResponse {
   headers: Headers;
