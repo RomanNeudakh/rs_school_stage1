@@ -2,6 +2,7 @@ import { routes } from './routes';
 import { renderWinners } from '../render/render_winners';
 import { renderCars } from '../render/render_cars';
 import { listenWinners } from '../render/winners_listen';
+import { listenGarage } from '../render/garage_listen';
 export class Router {
     render(url: string) {
         const body = document.querySelector('.body');
@@ -16,6 +17,7 @@ export class Router {
                 console.log('main page');
             } else if (url.match(new RegExp(routes[1].path))) {
                 renderCars();
+                listenGarage();
                 console.log('garage page');
             } else if (url.match(new RegExp(routes[2].path))) {
                 console.log('winners page');

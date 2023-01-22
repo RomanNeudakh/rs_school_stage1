@@ -36,6 +36,10 @@ export const garage = `
             <div class="main_container-garage_track">
 
             </div>
+            <div class="main_container-garage_input">
+                Winners per page: <input type="number" min="1" max="10" placeholder="sad" 
+                class="main_container-garage_input_winners-per-page">
+            </div>
             <div class="main_container-garage_nav-pagination">
                 <button class="main_container-garage_nav-pagination_prev">PREV</button>
                 <button class="main_container-garage_nav-pagination_next">NEXT</button>

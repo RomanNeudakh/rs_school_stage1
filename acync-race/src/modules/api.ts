@@ -1,6 +1,6 @@
 import { root_winners } from './const';
 import { root_garage } from './const';
-import { IResponse, IResponseCars } from './inerfeses';
+import { IResponse, IResponseCars, INewCar } from './inerfeses';
 // import { IWinnersArray } from './inerfeses';
 
 export const getWinners = async (
@@ -45,7 +45,61 @@ export const getCar = async (id: number) => {
             console.log(error);
         });
 };
+export const getWinner = async (id: number) => {
+    return await fetch(`${root_winners}/${id}`, { method: 'GET' })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                return response.json();
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
+export const deleteCar = async (id: number) => {
+    return await fetch(`${root_garage}/${id}`, { method: 'DELETE' })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                return response.json();
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
+export const deleteWinner = async (id: number) => {
+    return await fetch(`${root_winners}/${id}`, { method: 'DELETE' })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                return response.json();
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+};
 
+export const createCar = async (data: INewCar) => {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    };
+    const response = await fetch(`${root_garage}`, options);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const json = await response.json();
+    return json;
+};
 // const data: IWinnersArray = {
 //     id: 4,
 //     wins: 2,

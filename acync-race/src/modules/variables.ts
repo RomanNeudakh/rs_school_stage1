@@ -6,6 +6,7 @@ export const variables: IAllVariables = {
     limitWinners: 2,
     limitCars: 4,
     allWinnersCount: 1,
+    allCarsCount: 0,
     sortWinners: 'wins',
     orderWinners: 'DESC',
 };

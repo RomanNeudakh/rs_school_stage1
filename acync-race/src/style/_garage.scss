@@ -78,7 +78,10 @@
 
     }
     &_track {
+      width: 100%;
+      padding: 10px;
       &_car-container {
+        padding: 5px;
         &_buttons-container {
           &_select {
             
@@ -97,11 +100,14 @@
           }
         }
         &_road {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          border-bottom: 2px dashed;
           &_car-img {
             display: block;
             width: 40px;
             height: 40px;
-            background: url('./img/car.svg') center center/cover no-repeat #ff0;
           }
           &_finish-img {
   
@@ -122,4 +128,10 @@
       }
     }
   }
+}
+button {
+  cursor: pointer;
+}
+.error {
+  border: 1px solid red;
 }

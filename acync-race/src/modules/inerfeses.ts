@@ -8,6 +8,10 @@ export interface ICarsArray {
     color: string;
     id: number;
 }
+export interface INewCar {
+    name: string;
+    color: string;
+}
 export interface IGetCar {
     name: string;
     color: string;
@@ -19,6 +23,7 @@ export interface IAllVariables {
     limitWinners: number;
     limitCars: number;
     allWinnersCount: number;
+    allCarsCount: number;
     sortWinners: 'id' | 'wins' | 'time';
     orderWinners: 'ASC' | 'DESC';
 }

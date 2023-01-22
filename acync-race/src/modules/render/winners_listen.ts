@@ -37,6 +37,9 @@ export const listenWinners = () => {
 
     const input = document.querySelector('.main_container-garage_input_winners-per-page');
     if (input instanceof HTMLInputElement) {
+        if (+input.value > 10) {
+            input.value = '10';
+        }
         input.addEventListener('input', () => {
             if (variables.limitWinners !== +input.value) {
                 variables.limitWinners = +input.value;

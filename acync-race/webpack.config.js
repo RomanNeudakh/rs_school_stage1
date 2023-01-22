@@ -52,7 +52,7 @@ module.exports = {
                 use: [devMode ? 'style-loader' : MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
             {
-                test: /\.(png|jpe?g|gif)$/i,
+                test: /\.(svg|png|jpe?g|gif)$/i,
                 type: 'asset/resource',
             },
         ],
