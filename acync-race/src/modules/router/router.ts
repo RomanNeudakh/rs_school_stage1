@@ -45,9 +45,12 @@ export class Router {
     }
     initRouter() {
         const localStorageData = localStorage.getItem('variables_data') || '';
-        const json = JSON.parse(localStorageData) || null;
-        for (const [key, value] of Object.entries(json)) {
-            variables[key] = value;
+        let json = null;
+        if (localStorageData) {
+            json = JSON.parse(localStorageData) || null;
+            for (const [key, value] of Object.entries(json)) {
+                variables[key] = value;
+            }
         }
         window.addEventListener('beforeunload', function () {
             const dataToSave = variables;
