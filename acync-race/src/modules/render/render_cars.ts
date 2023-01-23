@@ -1,6 +1,7 @@
 import { getCars } from '../api';
 import { IResponseCars } from '../inerfeses';
 import { variables } from '../variables';
+import { DriveCar } from './drive_car';
 import { htmlSingleCar } from './garageApi';
 // import {require} from ;
 
@@ -22,5 +23,10 @@ export const renderCars = async () => {
     const parentNode = document.querySelector('.main_container-garage_track');
     if (parentNode) {
         parentNode.innerHTML = result;
+    }
+    for (const element of cars.data) {
+        console.log(element.id);
+        const x = new DriveCar(element.id);
+        console.log(x);
     }
 };

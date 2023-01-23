@@ -1,3 +1,4 @@
+// import { driveCar, startStopCar } from '../api';
 import { variables } from '../variables';
 import { buttonUpdateCar, createNewCar, createRandomCars, deleteCarButton, updateActive } from './garageApi';
 import { renderCars } from './render_cars';
@@ -59,4 +60,34 @@ export const listenGarage = () => {
         variables.inputUpdate = inputUpdate.value;
     });
     inputUpdate.value = variables.inputUpdate;
+
+    // document.querySelector('.main_container-garage_race-button')?.addEventListener('click', async () => {
+    //     const car = document.getElementById('svg-32');
+    //     const track = document.getElementById('road-32') as HTMLElement;
+    //     const content = await startStopCar('started', 32);
+    //     console.log(Math.round(content.distance / content.velocity / 10) / 100);
+    //     race.push([32, ])
+    //     driveCar(32).then(() => {
+    //         cancelAnimationFrame(animationId);
+    //     });
+    //     let xPos = 0;
+    //     let animationId: number;
+    //     function updatePosition() {
+    //         if (track && car) {
+    //             xPos += 10;
+    //             if (car) {
+    //                 car.style.transform = `translateX(${xPos}px)`;
+    //             }
+
+    //             while (track && car && xPos >= track.offsetWidth - car.clientWidth) {
+    //                 console.log(animationId);
+    //                 cancelAnimationFrame(animationId);
+    //                 return;
+    //             }
+    //         }
+    //         animationId = requestAnimationFrame(updatePosition);
+
+    //     }
+    //     updatePosition();
+    // });
 };

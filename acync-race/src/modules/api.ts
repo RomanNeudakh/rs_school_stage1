@@ -1,4 +1,4 @@
-import { root_winners } from './const';
+import { root_engine, root_winners } from './const';
 import { root_garage } from './const';
 import { IResponse, IResponseCars, INewCar } from './inerfeses';
 // import { IWinnersArray } from './inerfeses';
@@ -114,6 +114,32 @@ export const updateCar = async (id: number, data: INewCar) => {
         body: JSON.stringify(data),
     };
     return await fetch(`${root_garage}/${id}`, options)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                return response.json();
+            }
+        })
+        .catch(() => {
+            console.log(`car not found`);
+        });
+};
+export const startStopCar = async (status: string, id: number) => {
+    return await fetch(`${root_engine}?id=${id}&status=${status}`, { method: 'PATCH' })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                return response.json();
+            }
+        })
+        .catch(() => {
+            console.log(`car not found`);
+        });
+};
+export const driveCar = async (id: number) => {
+    return await fetch(`${root_engine}?id=${id}&status=drive`, { method: 'PATCH' })
         .then((response) => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);

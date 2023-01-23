@@ -66,12 +66,12 @@ export const htmlSingleCar = (id: number, name: string, color: string) => {
       <div class="main_container-garage_track_car-container_buttons-container">
         <button data-idcar="${id}" id="select" class="main_container-garage_track_car-container_buttons-container_select">SELECT</button>
         <button data-idcar="${id}" id="remove" class="main_container-garage_track_car-container_buttons-container_remove">REMOVE</button>
-        <button id="start" class="main_container-garage_track_car-container_buttons-container_engine-start">START</button>
-        <button id="stop" class="main_container-garage_track_car-container_buttons-container_engine-stop">STOP</button>
+        <button data-idcar="${id}" id="start" class="main_container-garage_track_car-container_buttons-container_engine-start">START</button>
+        <button data-idcar="${id}" id="stop" class="main_container-garage_track_car-container_buttons-container_engine-stop">STOP</button>
         <div class="main_container-garage_track_car-container_buttons-container_car-name">${name}</div>
       </div>
-      <div class="main_container-garage_track_car-container_road">
-          <svg width="60px" height="30px" viewBox="0 0 1280.000000 596.000000">
+      <div  data-idcar="${id}" id="road-${id}" class="main_container-garage_track_car-container_road">
+          <svg  data-idcar="${id}" id="svg-${id}" width="40px" height="30px" viewBox="0 0 1280.000000 596.000000">
             <g transform="translate(0.000000,596.000000) scale(0.100000,-0.100000)"
             fill="${color}" stroke="none">
             <path d="M5022 5925 c-387 -79 -745 -104 -1052 -75 -132 12 -134 12 -260 5
@@ -173,4 +173,7 @@ export function updateActive(flag: boolean) {
             buttons[i].disabled = flag ? true : false;
         }
     }
+}
+export function stopEngine() {
+    return false;
 }
