@@ -1,0 +1,37 @@
+.main {
+  &_container-garage {
+    &_winners-count {
+      padding: 10px;
+    }
+    &_winners-page-number {
+      padding: 10px;
+    }
+    &_table {
+      &_tr {
+        &:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+        &_th {
+          text-align: center;
+          padding: 10px;
+          width: 150px;
+        }
+        &_td {
+          text-align: center;
+          padding: 20px;
+        }
+      }
+    }
+    &_main_container-garage_input{
+      &_winners-per-page {
+
+      }
+    }
+  }
+}
+.sorted-ASC:after {
+  content: "▲";
+}
+.sorted-DESC:after {
+  content: "▼";
+}
