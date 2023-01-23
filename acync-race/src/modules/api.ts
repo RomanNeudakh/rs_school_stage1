@@ -151,28 +151,3 @@ export const driveCar = async (id: number) => {
             console.log(`car not found`);
         });
 };
-// const data: IWinnersArray = {
-//     id: 4,
-//     wins: 2,
-//     time: 3.4,
-// };
-
-// const postData = async (url: string, data: IWinnersArray) => {
-//     const options = {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(data),
-//     };
-//     const response = await fetch(url, options);
-//     if (!response.ok) {
-//         throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-//     const json = await response.json();
-//     return json;
-// };
-
-// postData(root_winners, data)
-//     .then((data) => console.log(data))
-//     .catch((error) => console.error(error));

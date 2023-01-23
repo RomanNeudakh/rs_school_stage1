@@ -70,7 +70,7 @@ export const htmlSingleCar = (id: number, name: string, color: string) => {
         <button data-idcar="${id}" id="stop" class="main_container-garage_track_car-container_buttons-container_engine-stop">STOP</button>
         <div class="main_container-garage_track_car-container_buttons-container_car-name">${name}</div>
       </div>
-      <div  data-idcar="${id}" id="road-${id}" class="main_container-garage_track_car-container_road">
+      <div data-idcar="${id}" id="road-${id}" class="main_container-garage_track_car-container_road">
           <svg  data-idcar="${id}" id="svg-${id}" width="40px" height="30px" viewBox="0 0 1280.000000 596.000000">
             <g transform="translate(0.000000,596.000000) scale(0.100000,-0.100000)"
             fill="${color}" stroke="none">
@@ -124,21 +124,17 @@ export const htmlSingleCar = (id: number, name: string, color: string) => {
 export const createRandomCars = async () => {
     const carsCount = document.querySelector('.main_container-garage_winners-count') as HTMLInputElement;
     for (let index = 0; index < 10; index++) {
-        const allCars = document.querySelectorAll('.main_container-garage_track_car-container');
-        const track = document.querySelector('.main_container-garage_track') as HTMLElement;
         const data: INewCar = {
             color: getRandomColor(),
             name: getRandomCarName(),
         };
         const newCarData = await createCar(data);
-        if (allCars && allCars.length < variables.limitCars) {
-            track.innerHTML += htmlSingleCar(newCarData.id, newCarData.name, newCarData.color);
-        }
         if (newCarData) {
             variables.allCarsCount = variables.allCarsCount + 1;
         }
     }
     carsCount.textContent = `Garage(${variables.allCarsCount})`;
+    renderCars();
 };
 
 export function getRandomElement(array: string[]) {
@@ -169,11 +165,16 @@ export function updateActive(flag: boolean) {
     for (let i = 0; i < buttons.length; i++) {
         if (buttons[i].id === 'update') {
             buttons[i].disabled = flag ? false : true;
-        } else {
+        } else if (buttons[i].id !== 'stop') {
             buttons[i].disabled = flag ? true : false;
         }
     }
 }
-export function stopEngine() {
-    return false;
+export function driveActive(flag: boolean, buttonStop?: HTMLButtonElement, buttonStart?: HTMLButtonElement) {
+    if (buttonStop) {
+        buttonStop.disabled = flag ? false : true;
+    }
+    if (buttonStart) {
+        buttonStart.disabled = flag ? true : false;
+    }
 }

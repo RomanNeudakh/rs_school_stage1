@@ -1,4 +1,5 @@
 import { IAllVariables } from './inerfeses';
+import { DriveCar } from '../modules/render/drive_car';
 
 export const variables: IAllVariables = {
     winnersPage: 1,
@@ -14,3 +15,4 @@ export const variables: IAllVariables = {
     inputCreate: '',
     inputUpdate: '',
 };
+export const driveCars: { [id: number]: DriveCar } = {};

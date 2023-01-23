@@ -1,5 +1,7 @@
 // import { driveCar, startStopCar } from '../api';
-import { variables } from '../variables';
+import { getCars } from '../api';
+import { IResponseCars } from '../inerfeses';
+import { variables, driveCars } from '../variables';
 import { buttonUpdateCar, createNewCar, createRandomCars, deleteCarButton, updateActive } from './garageApi';
 import { renderCars } from './render_cars';
 
@@ -7,6 +9,7 @@ export const listenGarage = () => {
     const inputCreate = document.querySelector('.main_container-garage_create_input-text') as HTMLInputElement;
     const inputUpdate = document.querySelector('.main_container-garage_update_input-text') as HTMLInputElement;
     const inputCarsPerPage = document.getElementById('cars_per_page') as HTMLInputElement;
+    const raceButton = document.querySelector('.main_container-garage_race-button') as HTMLButtonElement;
     inputCarsPerPage.placeholder = `${variables.limitCars}`;
     document.querySelector('.main_container-garage_create_button-create')?.addEventListener('click', createNewCar);
     document.querySelector('.main_container-garage_update_button-update')?.addEventListener('click', buttonUpdateCar);
@@ -60,34 +63,23 @@ export const listenGarage = () => {
         variables.inputUpdate = inputUpdate.value;
     });
     inputUpdate.value = variables.inputUpdate;
-
-    // document.querySelector('.main_container-garage_race-button')?.addEventListener('click', async () => {
-    //     const car = document.getElementById('svg-32');
-    //     const track = document.getElementById('road-32') as HTMLElement;
-    //     const content = await startStopCar('started', 32);
-    //     console.log(Math.round(content.distance / content.velocity / 10) / 100);
-    //     race.push([32, ])
-    //     driveCar(32).then(() => {
-    //         cancelAnimationFrame(animationId);
-    //     });
-    //     let xPos = 0;
-    //     let animationId: number;
-    //     function updatePosition() {
-    //         if (track && car) {
-    //             xPos += 10;
-    //             if (car) {
-    //                 car.style.transform = `translateX(${xPos}px)`;
-    //             }
-
-    //             while (track && car && xPos >= track.offsetWidth - car.clientWidth) {
-    //                 console.log(animationId);
-    //                 cancelAnimationFrame(animationId);
-    //                 return;
-    //             }
-    //         }
-    //         animationId = requestAnimationFrame(updatePosition);
-
-    //     }
-    //     updatePosition();
-    // });
+    raceButton.addEventListener('click', async () => {
+        raceButton.disabled = true;
+        document.querySelector('.main_container-garage_race-button');
+        const cars: IResponseCars = await getCars(variables.carsPage, variables.limitCars);
+        for (const element of cars.data) {
+            if (driveCars[element.id]) {
+                driveCars[element.id].clickStartButton();
+            }
+        }
+    });
+    document.querySelector('.main_container-garage_reset-button')?.addEventListener('click', async () => {
+        raceButton.disabled = false;
+        const cars: IResponseCars = await getCars(variables.carsPage, variables.limitCars);
+        for (const element of cars.data) {
+            if (driveCars[element.id]) {
+                driveCars[element.id].clickStopButton();
+            }
+        }
+    });
 };
