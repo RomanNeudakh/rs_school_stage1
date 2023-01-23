@@ -40,23 +40,27 @@ export class DriveCar {
         this.backToStart();
     }
     async clickStartButton() {
-        // const startStopCarPromise = await this.startStopCar('started', this.id);
-        // startStopCarPromise.then((content) => {
-        //     const time = Math.round((content.distance / content.velocity / 1000) * 10000) / 10000;
-        //     this.time = time;
-        //     console.log(this.time);
-        //     this.updatePosition();
-        //     return this.startDrive();
-        // });
         if (this.stopButton instanceof HTMLButtonElement && this.startButton instanceof HTMLButtonElement) {
             driveActive(true, this.stopButton, this.startButton);
         }
-        const content = await this.startStopCar('started', this.id);
-        const time = Math.round((content.distance / content.velocity / 1000) * 10000) / 10000;
-        this.time = time;
-        console.log(this.time);
-        this.updatePosition();
-        this.startDrive();
+        return this.startStopCar('started', this.id)
+            .then(async (content) => {
+                const time = Math.round((content.distance / content.velocity / 1000) * 10000) / 10000;
+                this.time = time;
+                this.updatePosition();
+                const errorDrive = await this.startDrive();
+                if (errorDrive !== 500) {
+                    return [this.id, time];
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        // const content = await this.startStopCar('started', this.id);
+        // const time = Math.round((content.distance / content.velocity / 1000) * 10000) / 10000;
+        // this.time = time;
+        // this.updatePosition();
+        // return this.startDrive();
     }
     startStopCar = async (status: string, id: number) => {
         return await fetch(`${root_engine}?id=${id}&status=${status}`, { method: 'PATCH' })
@@ -71,8 +75,8 @@ export class DriveCar {
                 console.log(`car not found`);
             });
     };
-    startDrive() {
-        fetch(`${root_engine}?id=${this.id}&status=drive`, { method: 'PATCH' })
+    async startDrive() {
+        return fetch(`${root_engine}?id=${this.id}&status=drive`, { method: 'PATCH' })
             .then(async (response) => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -83,7 +87,8 @@ export class DriveCar {
             .catch(async () => {
                 console.log(`car not found`);
                 cancelAnimationFrame(this.animationId);
-                await this.startStopCar('stopped', this.id);
+                this.startStopCar('stopped', this.id);
+                return 500;
             });
     }
     stopDrive() {

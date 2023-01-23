@@ -67,11 +67,14 @@ export const listenGarage = () => {
         raceButton.disabled = true;
         document.querySelector('.main_container-garage_race-button');
         const cars: IResponseCars = await getCars(variables.carsPage, variables.limitCars);
+        const carsStarts = [];
         for (const element of cars.data) {
             if (driveCars[element.id]) {
-                driveCars[element.id].clickStartButton();
+                carsStarts.push(driveCars[element.id].clickStartButton());
+                // console.log(driveCars[element.id].clickStartButton());
             }
         }
+        Promise.all(carsStarts).then((value) => console.log(value));
     });
     document.querySelector('.main_container-garage_reset-button')?.addEventListener('click', async () => {
         raceButton.disabled = false;
