@@ -1,4 +1,4 @@
-# romzezzz-JSFE2022Q3
+# RSS_JSFE2022Q3
 
 
 1. [RSS_SongBird Game](https://romzezzz.github.io/rs_school_stage1/songbird/pages/main/)
