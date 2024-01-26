@@ -1,0 +1,208 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth; 
+}
+body {
+    max-width: 1900px;
+    min-height: 100vh;
+    margin: 0 auto;
+    font-family: 'Red Hat Text', sans-serif; 
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #030303;
+}
+.container {
+    max-width: 1160px;
+    margin: 0 auto;
+    min-height: 100px;
+}
+.header_container {
+    margin: 0 auto;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+.button {
+    min-width: 100px;
+    min-height: 30px;
+    margin-top: 20px;
+    border: 2px solid grey;
+    border-radius: 6px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), 4px 4px 4px rgb(13 96 111 / 16%);
+    transition: all 0.9s ease;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: rgb(192, 185, 185);
+    transform: 1s ease;
+}
+.field {
+    margin: 0 auto;
+    position: relative;
+    margin-top: 20px;
+    max-width: 600px;
+    height: 600px;
+    background: linear-gradient(177.09deg, #ededed 6.15%, #78797a 202.69%);
+    border-radius: 5px;
+}
+
+.additional {
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 600px;
+    display: flex;
+    justify-content: space-around;
+}
+.addText {
+
+}
+.select {
+    max-width: 80px;
+    border-radius: 5px;
+}
+.select:hover {
+    cursor: pointer;
+}
+.tile {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #78797a;
+    font-size: 30px;
+    color: #0e0f0f;
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+    border: 1px solid rgb(50, 48, 48);
+    border-radius: 5px;
+    cursor: move;
+    transition: all 0.6s ease;
+}
+.pop_up_board {
+    display: none;
+    top: 0px;
+    width: 100%;
+    min-height: 100%;
+    z-index: 20;
+    transform: scale(0%);
+    transition: transform 0.4s ease-in-out;
+}
+.pop_up_board_active {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    z-index: 20;
+    transform: scale(100%);
+    transition: transform 0.4s ease-in-out;
+}
+.closeButton {
+    margin: 0 auto;
+    margin-top: 10px;
+    display: block;
+    width: 20%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    min-height: 40px;
+}
+.closeButton:hover {
+    cursor: pointer;
+    transform: scale(120%);
+}
+.numberTable {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 40%;
+    text-align: center;
+    background-color: white;
+}
+table {
+    border-spacing: 0;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 40%;
+    border: 1px solid #ddd;
+}
+th:nth-child(3) {
+    cursor: pointer;
+}
+th:last-child {
+    cursor: pointer;
+}
+th:first-child {
+    width: 10%;
+}
+th, td {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+.pop_up_win {
+    display: none;
+    top: 0px;
+    width: 100%;
+    min-height: 100%;
+    z-index: 20;
+    transform: scale(0%);
+    transition: transform 0.4s ease-in-out;
+}
+.pop_up_win_active {
+    display: block;
+    width: 100%;
+    min-height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow: hidden;
+    position: fixed;
+    top: 0px;
+    z-index: 20;
+    transform: scale(100%);
+    transition: transform 0.4s ease-in-out;
+}
+.messege {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+    max-width: 340px;
+    min-height: 200px;
+    padding: 10px;
+    background: white;
+}
+.input {
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.closeButtonWin {
+    margin: 0 auto;
+    margin-top: 10px;
+    display: block;
+    width: 10%;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    min-height: 40px;
+}
+.closeButtonWin:hover {
+    cursor: pointer;
+    transform: scale(120%);
+}
+.dragging {
+    transform: scale(150%);
+}
