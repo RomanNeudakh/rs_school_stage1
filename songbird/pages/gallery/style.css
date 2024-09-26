@@ -1,0 +1,364 @@
+html {
+  scroll-behavior: smooth; 
+  min-height: 100vh;
+  min-width: 340px;
+}
+body {
+  font-family: 'Caveat', cursive;
+  color: #ffc600;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #7c1599 0%,#921099 48%,#7e4ae8 100%);
+}
+a {
+  text-decoration: none;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s all ease;
+}
+.logo:hover {
+  transform: scale(0.9);
+}
+.logo-img {
+  max-width: 300px;
+}
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+.bird-left {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 150px;
+}
+.bird-right {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  width: 150px;
+}
+.slider {
+  max-width: 1160px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.card-header {
+  display: flex;
+}
+.anotation {
+  padding: 10px;
+  font-size: 24px;
+}
+.anotation-text {
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.bird-img {
+  width: 300px;
+  height: 220px;
+  border-radius: 10px;
+}
+.bird-name {
+  margin: 0 auto;
+}
+.player {
+  margin: 0 auto;
+  margin-top: 100px;
+  max-width: 750px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  position: relative;
+  font-size: 0;
+  overflow: hidden;
+}
+.player-button {
+  width: 35px;
+  background: none;
+  border: 0;
+  line-height: 1;
+  font-size: 21px;
+  color: #ffc600;
+  cursor: pointer;
+}
+.audio-controlls {
+  display: flex;
+  background: rgba(0,0,0,0.1);
+  flex-direction: column;
+}
+.progress-container {
+  display: flex;
+  justify-content: space-between;
+}
+.progress {
+  margin-left: 4px;
+  flex: 10;
+  position: relative;
+  display: flex;
+  flex-basis: 100%;
+  height: 20px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.5);
+  cursor: ew-resize;
+}
+.progress-filled {
+  width: 100%;
+  border-radius: 10px;
+  background: #ffc600;
+  flex: 0;
+  flex-basis: 0%;
+}
+.audio-duration {
+  position: absolute;
+  height: 20px;
+  color:white;
+  font-size: 17px;
+  left: 10px;
+}
+.player-volume {
+  width: 120px;
+  background-color: #ffc600;
+  width: 120px;
+  background-color: #ffc600;
+  max-height: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+input[type=range] {
+  -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  cursor: pointer;
+  background: #ffc600;
+  border-radius: 10px;
+}
+input[type=range]::-moz-range-track  {
+  cursor: pointer;
+  background-color: #ffc600;
+  border-radius: 10px;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  background: #FE9013;
+  cursor: ew-resize;
+  -webkit-appearance: none;
+}
+input[type=range]::-moz-range-thumb {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  background: #FE9013;
+  cursor: ew-resize;
+  -webkit-appearance: none;
+}
+.sound-container {
+  display: flex;
+}
+.sound-img {
+  width: 20px;
+  padding: 9px;
+  cursor: pointer;
+}
+.arrows {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 200px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.arrow-left {
+  max-width: 60px;
+  max-height: 60px;
+  transition: 0.6s all ease;
+}
+.arrow-left:hover {
+  cursor: pointer;
+  transform: scale(0.8);
+}
+.arrow-right {
+  max-width: 60px;
+  max-height: 60px;
+  transition: 0.6s all ease;
+}
+.arrow-right:hover {
+  cursor: pointer;
+  transform: scale(0.8);
+}
+.bird-number {
+  font-size: 36px;
+}
+.main {
+  padding: 10px;
+}
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style-type: none;
+}
+.nav-item {
+  margin-left: 50px;
+  text-decoration: none;
+}
+.nav-link {
+  font-family: 'Caveat', cursive;
+  font-size: 48px;
+  color: #ffc600;
+}
+.nav-item:nth-child(1) {
+  margin-left: 0;
+}
+.nav-link:hover {
+  color: yellow;
+}
+.burger-icon {
+  display: none;
+  margin-left: 30px;
+  width: 30px;
+  height: 30px;
+}
+.burger-icon:hover {
+  cursor: pointer;
+}
+.wrapper {
+  flex: 1 0 auto;
+}
+.footer {
+  flex: 0 0 auto;
+  padding: 10px;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+.rs-school {
+  display: flex;
+  align-items: center;
+  width: 130px;
+  transition: 1s all ease;
+}
+.rs-school:hover {
+  transform: scale(0.9);
+}
+.git-hub {
+  display: flex;
+  transition: 1s all ease;
+}
+.git-hub:hover {
+  transform: scale(0.9);
+}
+.year {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-family: 'Caveat', cursive;
+  font-size: 48px;
+  color: #ffc600;
+}
+
+/*-----------------------------------burger-menu-----------------------------------*/
+.burger-menu-popup {
+  display: none;
+  position: fixed;
+  width:100%;
+  min-height:100%;
+  z-index: 20;
+  background-color: rgba(0,0,0,0.5);
+}
+.burger-menu-active {
+  display: block;
+}
+.burger-menu {
+  width:100%;
+  min-height:200px;
+  background-color: #c6729e;
+  overflow:hidden;
+  position:fixed;
+  top:0px;
+  z-index: 20;
+}
+.burger-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+.x-icon-orange {
+  display: flex;
+  align-items: center;
+}
+.x-icon-orange:hover {
+  cursor: pointer;
+}
+.x-icon {
+  width: 30px;
+}
+.burger-menu-active .nav {
+  display: flex;
+  padding: 5px;
+}
+.burger-menu-active .nav-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+}
+.burger-menu-active .nav-link {
+  font-size: 36px;
+}
+
+/*----------------------------------------media----------------------------------------*/
+
+@media (max-width: 1000px) {
+  .nav {
+    display: none;
+  }
+  .burger-icon {
+    display: block;
+  }
+  .logo-img {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 1439px) {
+  .bird-left {
+    display: none;
+  }
+  .bird-right {
+    display: none;
+  }
+}
+
+@media (max-width: 811px) {
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .slider {
+    margin-top: 0;
+  }
+  .player {
+    margin-top: 20px;
+  }
+}
+
+
+
+
+
+

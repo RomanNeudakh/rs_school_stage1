@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../assets/icon/favicon.ico">
+  <link rel="stylesheet" href="../../assets/styles/normalize.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Songbird</title>
+</head>
+<body>
+  <div class="burger-menu-popup">
+    <div class="burger-menu">
+      <div class="burger-header">
+        <a href="./index.html" class="logo">
+          <img src="../../assets/icon/logo.png" alt="logo" class="logo-img">
+        </a>
+        <div class="x-icon-orange">
+            <img class="x-icon" src="../../assets/icon/x-icon.png" alt="x_icon">
+        </div>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+            <li class="nav-item-header">
+                <a href="../main/index.html" class="nav-link"></a>
+            </li>
+            <li class="nav-item-header">
+                <a style="color: yellow;" href="#" class="nav-link"></a>
+            </li>
+            <li class="nav-item-header">
+                <a href="../results/index.html" class="nav-link"></a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="wrapper">
+    <header> 
+      <div class="container">
+        <div class="header">
+          <a href="../main/index.html" class="logo">
+            <img src="../../assets/icon/logo.png" alt="logo" class="logo-img">
+          </a>
+          <nav class="nav">
+            <ul class="nav-list">
+              <li class="nav-item">
+                <a href="../main/index.html" class="nav-link"></a> 
+              </li>
+              <li class="nav-item">
+                <a style="color: yellow;" href="#" class="nav-link"></a> 
+              </li>
+              <li class="nav-item">
+                <a href="../results/index.html" class="nav-link"></a> 
+              </li>
+            </ul>
+          </nav>
+            <img src="../../assets/icon/burger-menu.png" alt="burger-menu" class="burger-icon">
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <img src="../../assets/images/bird-left.png" alt="bird" class="bird-left">
+      <img src="../../assets/images/bird-right.png" alt="bird" class="bird-right">
+      <div class="container">
+        <div class="slider">
+          <div class="card-container">
+            <div class="card-header">
+              <div class="bird-image">
+                <img src="#" alt="bird" class="bird-img">
+              </div>
+              <div class="anotation" >
+                <p class="bird-name"></p>
+                <p class="anotation-text"></p>
+              </div>
+            </div>
+            <div class="player">
+              <audio loop class="audio" src="#"></audio>
+              <div class="audio-controlls">
+                <div class="progress-container">
+                  <button class="player-button">►</button>
+                  <div class="progress">
+                    <div class="audio-duration"></div>
+                    <div class="progress-filled"></div>
+                  </div>
+                </div>
+                <div class="sound-container">
+                  <img src="../../assets/icon/sound.png" alt="sound" class="sound-img">
+                  <input type="range" name="volume" class="player-volume" min="0" max="1" step="0.05" value="1">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="arrows">
+          <img src="../../assets/icon/left.png" alt="arrow" class="arrow-left">
+          <div class="bird-number"></div>
+          <img src="../../assets/icon/right.png" alt="arrow" class="arrow-right">
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-container">
+        <a href="https://rs.school/js/" class="rs-school">
+          <img class="rs-school" src="../../assets/icon/rs_school_js.png" alt="rs-school">
+        </a>
+        <a href="https://github.com/RomZeZZZ" class="git-hub">
+          <div class="year">
+            2022
+          </div>
+          <img src="../../assets/icon/git-logo.png" alt="git-Logo">
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="./script.js" ></script>
+</body>
+</html>
