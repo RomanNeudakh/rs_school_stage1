@@ -1,0 +1,138 @@
+.main {
+  &_container-garage {
+    height: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &_nav {
+      width: 320px;
+      display: flex;
+      justify-content: space-between;
+      &_togarage {
+        padding: 8px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      &_towinners {
+        padding: 8px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+    &_create {
+      width: 320px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &_input-text {
+        width: 150px;
+        border: 1px solid black;
+      }
+      &_input-color {
+        margin: 10px;
+      }
+      &_button-create{
+
+      }
+    }
+    &_update {
+      width: 320px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &_input-text {
+        width: 150px;
+        border: 1px solid black;
+      }
+      &_input-color {
+        margin: 10px;
+      }
+      &_button-update {
+      }
+    }
+    &_control {
+      width: 320px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &_race-button {
+        
+      }
+      &_reset-button {
+
+      }
+      &_generate-button {
+      }
+    }
+    &_winners-count {
+
+    }
+    &_winners-page-number {
+
+    }
+    &_track {
+      width: 100%;
+      padding: 10px;
+      &_car-container {
+        padding: 5px;
+        &_buttons-container {
+          &_select {
+            
+          }
+          &_remove {
+            
+          }
+          &_engine-start {
+            
+          }
+          &_engine-stop {
+            
+          }
+          &_car-name {
+            
+          }
+        }
+        &_road {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          border-bottom: 2px dashed;
+          &_car-img {
+            display: block;
+            width: 40px;
+            height: 40px;
+          }
+          &_finish-img {
+  
+          }
+        }
+      }
+    }
+    &_nav-pagination {
+      &_next {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      &_prev {
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+button {
+  cursor: pointer;
+}
+.error {
+  border: 1px solid red;
+}
