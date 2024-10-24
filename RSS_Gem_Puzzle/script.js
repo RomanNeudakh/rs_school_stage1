@@ -1,11 +1,5 @@
 'use strict'
 //Создаем ограничевающий контейнер
-const AppExtensionsSDK = require('@pipedrive/app-extensions-sdk');
-const sdk = await new AppExtensionsSDK({ identifier: ${req.query.id} }).initialize({ size: { height: 500 } });
-const { status } = await sdk.execute(Command.OPEN_MODAL, {
-type: Modal.CUSTOM_MODAL,
-action_id: '96882355-b482-4b31-8157-f2516fe6c26d'
-});
 let body = document.querySelector('body');
 let container = document.createElement('div');
 let leadBordFromLocalStorage;
